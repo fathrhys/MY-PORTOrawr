@@ -20,6 +20,24 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Environment
+
+Copy `.env.example` to `.env`, then set:
+
+- `DATABASE_URL`
+- `ADMIN_PASSWORD_HASH`
+- `ADMIN_COOKIE_SECRET`
+- `SITE_URL`
+
+Generate `ADMIN_PASSWORD_HASH` (scrypt) with:
+
+```bash
+node -e "const { scryptSync, randomBytes } = require('crypto'); const pwd = process.argv[2]; if (!pwd) { console.error('Usage: node -e <script> -- <password>'); process.exit(1); } const salt = randomBytes(16); const key = scryptSync(pwd, salt, 32, { N: 16384, r: 8, p: 1 }); console.log(['scrypt',16384,8,1,salt.toString('base64url'),key.toString('base64url')].join('$'));" -- "your_password_here"
+```
+
+Note: If you put the hash in `.env`, escape `$` as `$$` (Next.js env expansion). The app will normalize it.
+Alternative: set `ADMIN_PASSWORD_HASH_B64` with base64url of the full hash string to avoid `$` expansion.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

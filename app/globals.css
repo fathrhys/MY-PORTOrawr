@@ -1,26 +1,177 @@
 @import "tailwindcss";
 
+/* =========================
+   THEME TOKENS (CSS VARS)
+   - edit ini buat ganti warna font / accent / background
+   ========================= */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* base */
+  --bg: #fbfaf7;              /* background */
+  --surface: rgba(255,255,255,0.85);  /* card / panel */
+  --surface-solid: #ffffff;   /* card solid */
+  --text: #0f172a;            /* text utama */
+  --muted: #475569;           /* text sekunder */
+  --ring: rgba(15,23,42,0.12);
+
+  /* accent */
+  --accent: #0f172a;          /* tombol utama, highlight */
+  --accentText: #ffffff;
+
+  /* optional: link */
+  --link: #0f172a;
+
+  /* optional: radius */
+  --radius: 18px;
 }
 
+/* Dark mode (aktif kalau <html class="dark">) */
+html.dark {
+  --bg: #0b0f17;
+  --surface: rgba(255,255,255,0.06);
+  --surface-solid: rgba(255,255,255,0.08);
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --ring: rgba(255,255,255,0.12);
+
+  /* accent di dark (bisa kamu ubah) */
+  --accent: #fbbf24;
+  --accentText: #0b0f17;
+
+  --link: #e5e7eb;
+}
+
+/* Tailwind theme mapping (biar bisa dipakai sebagai text-background kalau mau) */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg);
+  --color-foreground: var(--text);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* =========================
+   GLOBAL BASE
+   ========================= */
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
 }
+
+/* bantu elemen umum */
+a {
+  color: inherit;
+}
+
+/* selection biar cakep */
+::selection {
+  background: rgba(251, 191, 36, 0.35);
+}
+
+/* contoh utility kecil (optional) */
+.theme-surface {
+  background: var(--surface);
+  border: 1px solid var(--ring);
+  border-radius: var(--radius);
+}
+
+/* Shared effects */
+.grain {
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(15,23,42,0.06), transparent 55%),
+    radial-gradient(circle at 85% 30%, rgba(15,23,42,0.04), transparent 55%),
+    radial-gradient(circle at 35% 85%, rgba(245,158,11,0.08), transparent 55%);
+}
+
+@keyframes floaty {
+  0% { transform: translate3d(0,0,0) scale(1); opacity: 0.35; filter: blur(70px); }
+  50% { transform: translate3d(30px,-16px,0) scale(1.05); opacity: 0.5; filter: blur(78px); }
+  100% { transform: translate3d(0,0,0) scale(1); opacity: 0.35; filter: blur(70px); }
+}
+
+.blobA { animation: floaty 18s ease-in-out infinite; }
+.blobB { animation: floaty 22s ease-in-out infinite reverse; }
+
+.u {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.2s ease;
+}
+.u:hover { background-size: 100% 2px; }
+
+.press:active { transform: translateY(1px); }
+
+.break-anywhere { overflow-wrap: anywhere; word-break: break-word; }
+
+/* Markdown */
+.md {
+  line-height: 1.75;
+  font-size: 15px;
+  min-width: 0;
+}
+.md h1 { font-size: 32px; line-height: 1.15; margin: 18px 0 10px; font-weight: 800; letter-spacing: -0.02em; }
+.md h2 { font-size: 22px; line-height: 1.25; margin: 18px 0 10px; font-weight: 800; letter-spacing: -0.01em; }
+.md h3 { font-size: 18px; line-height: 1.35; margin: 16px 0 8px; font-weight: 800; }
+.md p { margin: 10px 0; color: rgba(15,23,42,0.75); }
+.md a { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.md ul, .md ol { margin: 10px 0 10px 22px; color: rgba(15,23,42,0.75); }
+.md li { margin: 6px 0; }
+.md hr {
+  border: 0;
+  height: 1px;
+  margin: 18px 0;
+  background: linear-gradient(to right, transparent, rgba(15,23,42,0.18), transparent);
+}
+.md blockquote {
+  margin: 12px 0;
+  padding: 10px 14px;
+  border-left: 4px solid rgba(15,23,42,0.18);
+  background: rgba(15,23,42,0.03);
+  border-radius: 12px;
+  color: rgba(15,23,42,0.72);
+}
+.md pre {
+  margin: 12px 0;
+  border-radius: 16px;
+  padding: 14px;
+  overflow-x: auto;
+  max-width: 100%;
+  min-width: 0;
+  background: rgb(15 23 42);
+}
+.md pre code {
+  display: block;
+  min-width: 0;
+  white-space: pre;
+  color: #e2e8f0;
+}
+.md pre code.hljs { color: #e2e8f0; }
+.md code:not(pre code) {
+  background: rgba(15,23,42,0.06);
+  padding: 2px 6px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: rgba(15,23,42,0.85);
+}
+.md table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 14px;
+  margin: 12px 0;
+}
+.md th, .md td {
+  border: 1px solid rgba(15,23,42,0.12);
+  padding: 10px 12px;
+  font-size: 14px;
+}
+.md th { background: rgba(15,23,42,0.04); text-align: left; }

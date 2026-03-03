@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  title       String
+  slug        String   @unique
+  description String   @db.Text
+  year        Int?
+  techStack   String   @db.Text
+  githubUrl   String?
+  demoUrl     String?
+  category    ProjectCategory @default(WEB)
+
+  // NEW: cover image (bisa URL atau /uploads/xxx.jpg)
+  coverUrl    String?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+}
+
+enum ProjectCategory {
+  WEB
+  CTF
+  AI
+  GAME
+  TOOLS
+  OTHER
+}
