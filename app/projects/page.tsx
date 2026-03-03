@@ -10,6 +10,7 @@ import GrainBackground from "@/components/ui/GrainBackground";
 import { CATEGORY_STYLES, CATS, LABEL, clampText } from "@/lib/projectUi";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Projects",

@@ -15,6 +15,7 @@ import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
