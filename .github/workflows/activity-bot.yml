@@ -2,9 +2,7 @@ name: GitHub Activity Bot
 
 on:
   schedule:
-    # Run every 2 hours at random minute between 0-59 using the common "0-59" format is not valid in cron but we run every 2 hours "0 */2" 
-    # instead we will run every hour randomly using bash sleep delays
-    - cron: '17 * * * *' # Menjalankan setiap jam di menit 17
+    - cron: '17 * * * *' # Menjalankan setiap jam. (Meski jalan per jam, kita tetap pakai delay)
   workflow_dispatch:
 
 jobs:
@@ -22,21 +20,12 @@ jobs:
       - name: Randomize execution
         id: random
         run: |
-          # 60% chance to SKIP this hour entirely (so we average 8-10 commits a day instead of 24)
-          CHANCE=$(( $RANDOM % 100 ))
-          if [ $CHANCE -lt 60 ]; then
-            echo "Skipping this run to simulate random human behavior."
-            echo "RUN_COMMIT=false" >> $GITHUB_ENV
-          else
-            echo "Running commit this time."
-            echo "RUN_COMMIT=true" >> $GITHUB_ENV
-            
-            # Wait a random amount of minutes (0 to 45 minutes) and seconds before committing
-            # to make the exact commit timestamp completely random
-            RANDOM_DELAY=$(( $RANDOM % 2700 ))
-            echo "Sleeping for $RANDOM_DELAY seconds before committing..."
-            sleep $RANDOM_DELAY
-          fi
+          echo "RUN_COMMIT=true" >> $GITHUB_ENV
+          
+          # Wait a random amount of minutes (0 to 10 menit) agar log lebih bervariatif sedikit
+          RANDOM_DELAY=$(( $RANDOM % 600 ))
+          echo "Sleeping for $RANDOM_DELAY seconds before committing (1-10 minutes)..."
+          sleep $RANDOM_DELAY
 
       - name: Update Activity Log with Random Commits
         if: env.RUN_COMMIT == 'true'
