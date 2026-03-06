@@ -26,6 +26,7 @@ export const metadata: Metadata = {
 };
 
 import { Providers } from "@/components/Providers";
+import LoadingScreen from "@/components/ui/LoadingScreen";
 
 export default function RootLayout({
   children,
@@ -36,6 +37,7 @@ export default function RootLayout({
     <html lang="id" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Providers attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <LoadingScreen />
           {children}
         </Providers>
       </body>
