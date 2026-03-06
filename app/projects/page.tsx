@@ -31,10 +31,10 @@ function FilterPill({ active, href, label }: { active: boolean; href: string; la
     <Link
       href={href}
       className={[
-        "inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold transition ring-1",
+        "inline-flex items-center rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300",
         active
-          ? "bg-slate-900 text-white ring-slate-900 !text-white"
-          : "bg-white text-slate-900 ring-slate-200 hover:bg-slate-50 !text-black",
+          ? "bg-slate-900 text-white shadow-md dark:bg-amber-300 dark:text-slate-900"
+          : "bg-white text-slate-600 ring-1 ring-slate-200 hover:bg-slate-50 hover:text-slate-900 dark:bg-white/5 dark:text-slate-300 dark:ring-white/10 dark:hover:bg-white/10 dark:hover:text-white",
       ].join(" ")}
     >
       {label}
@@ -110,7 +110,7 @@ export default async function ProjectsPage({
 
                 <div className="overflow-hidden rounded-3xl bg-white ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
                   <div className="relative h-40">
-                  <CoverAdaptive url={pick?.coverUrl} tintClass={pickStyle.coverTint} />
+                    <CoverAdaptive url={pick?.coverUrl} tintClass={pickStyle.coverTint} />
                     <div className="absolute left-5 top-5 flex items-center gap-2">
                       <span className={`rounded-full px-3 py-1 text-xs font-semibold ${pickStyle.chip}`}>
                         {LABEL[pickCat]}

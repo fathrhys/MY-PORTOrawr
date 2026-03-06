@@ -114,39 +114,42 @@ a {
 
 /* Markdown */
 .md {
-  line-height: 1.75;
+  line-height: 1.8;
   font-size: 15px;
   min-width: 0;
+  color: var(--text);
 }
-.md h1 { font-size: 32px; line-height: 1.15; margin: 18px 0 10px; font-weight: 800; letter-spacing: -0.02em; }
-.md h2 { font-size: 22px; line-height: 1.25; margin: 18px 0 10px; font-weight: 800; letter-spacing: -0.01em; }
-.md h3 { font-size: 18px; line-height: 1.35; margin: 16px 0 8px; font-weight: 800; }
-.md p { margin: 10px 0; color: rgba(15,23,42,0.75); }
-.md a { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-.md ul, .md ol { margin: 10px 0 10px 22px; color: rgba(15,23,42,0.75); }
+.md h1 { font-size: 32px; line-height: 1.15; margin: 24px 0 12px; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+.md h2 { font-size: 24px; line-height: 1.25; margin: 24px 0 12px; font-weight: 800; letter-spacing: -0.01em; color: var(--text); }
+.md h3 { font-size: 18px; line-height: 1.35; margin: 20px 0 10px; font-weight: 800; color: var(--text); }
+.md p { margin: 12px 0; color: var(--muted); }
+.md a { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; color: var(--accent); }
+.md ul, .md ol { margin: 12px 0 12px 22px; color: var(--muted); }
 .md li { margin: 6px 0; }
 .md hr {
   border: 0;
   height: 1px;
-  margin: 18px 0;
-  background: linear-gradient(to right, transparent, rgba(15,23,42,0.18), transparent);
+  margin: 24px 0;
+  background: linear-gradient(to right, transparent, var(--ring), transparent);
 }
 .md blockquote {
-  margin: 12px 0;
-  padding: 10px 14px;
-  border-left: 4px solid rgba(15,23,42,0.18);
-  background: rgba(15,23,42,0.03);
+  margin: 16px 0;
+  padding: 12px 16px;
+  border-left: 4px solid var(--accent);
+  background: var(--surface);
   border-radius: 12px;
-  color: rgba(15,23,42,0.72);
+  color: var(--muted);
+  font-style: italic;
 }
 .md pre {
-  margin: 12px 0;
+  margin: 16px 0;
   border-radius: 16px;
-  padding: 14px;
+  padding: 16px;
   overflow-x: auto;
   max-width: 100%;
   min-width: 0;
-  background: rgb(15 23 42);
+  background: #0f172a; /* Keep code blocks consistently dark */
+  border: 1px solid var(--ring);
 }
 .md pre code {
   display: block;
@@ -156,22 +159,23 @@ a {
 }
 .md pre code.hljs { color: #e2e8f0; }
 .md code:not(pre code) {
-  background: rgba(15,23,42,0.06);
+  background: var(--surface);
+  border: 1px solid var(--ring);
   padding: 2px 6px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-weight: 600;
-  color: rgba(15,23,42,0.85);
+  color: var(--accent);
 }
 .md table {
   width: 100%;
   border-collapse: collapse;
   overflow: hidden;
   border-radius: 14px;
-  margin: 12px 0;
+  margin: 16px 0;
 }
 .md th, .md td {
-  border: 1px solid rgba(15,23,42,0.12);
+  border: 1px solid var(--ring);
   padding: 10px 12px;
   font-size: 14px;
 }
-.md th { background: rgba(15,23,42,0.04); text-align: left; }
+.md th { background: var(--surface); text-align: left; }
