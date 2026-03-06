@@ -63,14 +63,14 @@ export default async function ProjectsPage({
   const pickStyle = CATEGORY_STYLES[pickCat];
 
   return (
-    <main className="min-h-screen bg-[#fbfaf7] text-slate-900">
+    <main className="min-h-screen">
       <Navbar />
       <GrainBackground />
 
       <div className="mx-auto max-w-6xl px-6 pb-20 pt-10">
         <section className="pt-6">
           <Reveal>
-            <div className="rounded-3xl bg-white/70 ring-1 ring-slate-200 p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
+            <div className="rounded-3xl bg-white/70 dark:bg-slate-900/50 ring-1 ring-slate-200 dark:ring-white/10 p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)] dark:shadow-none">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">
@@ -108,7 +108,7 @@ export default async function ProjectsPage({
                   </div>
                 </div>
 
-                <div className="overflow-hidden rounded-3xl bg-white ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
+                <div className="overflow-hidden rounded-3xl bg-white dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-white/10 shadow-[0_18px_60px_rgba(15,23,42,0.06)] dark:shadow-none">
                   <div className="relative h-40">
                     <CoverAdaptive url={pick?.coverUrl} tintClass={pickStyle.coverTint} />
                     <div className="absolute left-5 top-5 flex items-center gap-2">
@@ -179,8 +179,8 @@ export default async function ProjectsPage({
                   <Reveal key={p.id} delay={0.03 + idx * 0.03}>
                     <article
                       className={[
-                        "group relative overflow-hidden rounded-3xl bg-white ring-1 ring-slate-200 transition",
-                        "hover:-translate-y-1 hover:ring-slate-300 hover:shadow-[0_18px_45px_rgba(15,23,42,0.12)]",
+                        "group relative overflow-hidden rounded-3xl bg-white dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-white/10 transition",
+                        "hover:-translate-y-1 hover:ring-slate-300 dark:hover:ring-white/20 hover:shadow-[0_18px_45px_rgba(15,23,42,0.12)] dark:hover:shadow-none",
                         st.cardHover ?? "",
                         isWide ? "md:col-span-2" : "",
                       ].join(" ")}

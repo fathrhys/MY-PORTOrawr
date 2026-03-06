@@ -35,7 +35,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#fbfaf7] text-slate-900 dark:bg-[#0b0f17] dark:text-slate-200 transition-colors duration-300`}>
         <Providers attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <LoadingScreen />
           {children}
