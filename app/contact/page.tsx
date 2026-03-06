@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Reveal from "@/components/ui/Reveal";
 import Link from "next/link";
 import { useState } from "react";
+import { toast } from "sonner";
 import GrainBackground from "@/components/ui/GrainBackground";
 
 export default function ContactPage() {
@@ -32,12 +33,12 @@ export default function ContactPage() {
           ? (data as { error: string }).error
           : null;
       setStatus("err");
-      setMsg(err || "Gagal mengirim pesan");
+      toast.error(err || "Gagal mengirim pesan");
       return;
     }
 
     setStatus("ok");
-    setMsg("Terkirim! Pesan kamu masuk ke database.");
+    toast.success("Terkirim! Pesan kamu masuk ke database.");
     setName("");
     setEmail("");
     setContent("");
@@ -124,19 +125,6 @@ export default function ContactPage() {
                     >
                       {isLoading ? "Mengirim..." : "Kirim pesan ->"}
                     </button>
-
-                    {msg ? (
-                      <div
-                        className={[
-                          "rounded-2xl px-4 py-3 text-sm ring-1",
-                          status === "ok"
-                            ? "bg-emerald-50 text-emerald-800 ring-emerald-200"
-                            : "bg-rose-50 text-rose-800 ring-rose-200",
-                        ].join(" ")}
-                      >
-                        {msg}
-                      </div>
-                    ) : null}
                   </form>
                 </div>
 

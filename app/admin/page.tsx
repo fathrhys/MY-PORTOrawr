@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export default function AdminLoginPage() {
   const [password, setPassword] = useState("");
@@ -28,10 +29,11 @@ export default function AdminLoginPage() {
         data && typeof data === "object" && "error" in data && typeof (data as { error?: unknown }).error === "string"
           ? (data as { error: string }).error
           : null;
-      setMsg(err || "Gagal login");
+      toast.error(err || "Gagal login");
       return;
     }
 
+    toast.success("Login berhasil");
     router.push("/admin/messages");
   }
 
@@ -55,8 +57,6 @@ export default function AdminLoginPage() {
           >
             {loading ? "Masuk..." : "Masuk"}
           </button>
-
-          {msg ? <p className="text-sm text-red-400">{msg}</p> : null}
         </form>
       </div>
     </main>
