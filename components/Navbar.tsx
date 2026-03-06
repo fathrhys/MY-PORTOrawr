@@ -77,6 +77,15 @@ export default function Navbar() {
               Download CV
             </a>
 
+            <button
+              onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { 'key': 'k', 'metaKey': true }))}
+              className="ml-2 flex items-center gap-2 rounded-xl bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-500 ring-1 ring-slate-200 transition hover:bg-slate-200 dark:bg-white/5 dark:text-slate-400 dark:ring-white/10 dark:hover:bg-white/10"
+            >
+              <span className="flex items-center gap-1">
+                <span className="text-[10px]">⌘</span>K
+              </span>
+            </button>
+
             {mounted && (
               <button
                 onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
@@ -142,7 +151,7 @@ export default function Navbar() {
                 );
               })}
 
-              <div className="mt-2 flex gap-2">
+              <div className="mt-2 flex flex-col gap-2">
                 <a
                   href="/cv.pdf"
                   target="_blank"
@@ -152,6 +161,18 @@ export default function Navbar() {
                 >
                   Download CV
                 </a>
+
+                <button
+                  onClick={() => {
+                    setMobileOpen(false);
+                    setTimeout(() => document.dispatchEvent(new KeyboardEvent('keydown', { 'key': 'k', 'metaKey': true })), 100);
+                  }}
+                  className="flex w-full items-center justify-between rounded-xl bg-slate-100 px-4 py-3 text-sm font-semibold text-slate-900 dark:bg-white/5 dark:text-white"
+                >
+                  <span>Command Menu</span>
+                  <span className="rounded bg-slate-200 px-2 py-0.5 text-xs text-slate-500 dark:bg-white/10 dark:text-slate-400">⌘K</span>
+                </button>
+
                 {mounted && (
                   <button
                     onClick={() => {
