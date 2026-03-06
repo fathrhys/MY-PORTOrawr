@@ -1,0 +1,33 @@
+name: GitHub Activity Bot
+
+on:
+  schedule:
+    # Berjalan setiap hari pada jam 00:00 UTC (sekitar jam 7 pagi WIB)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Memungkinkan kamu menjalankan bot secara manual
+
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update Activity Log
+        run: |
+          # Membuat/mengupdate file dengan tanggal hari ini
+          echo "Last bot activity: $(date)" > .github-activity-log.txt
+          
+          # Konfigurasi user git
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # Commit dan push
+          git add .github-activity-log.txt
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: auto-update activity log [skip ci]"
+          git push origin HEAD:${{ github.ref }}
