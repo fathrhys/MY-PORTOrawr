@@ -20,19 +20,7 @@ jobs:
       - name: Randomize execution
         id: random
         run: |
-          # 35% chance to SKIP this hour entirely (so we average ~15 commits a day instead of 24)
-          CHANCE=$(( $RANDOM % 100 ))
-          if [ $CHANCE -lt 35 ]; then
-            echo "Skipping this run to keep it realistic!"
-            echo "RUN_COMMIT=false" >> $GITHUB_ENV
-          else
-            echo "RUN_COMMIT=true" >> $GITHUB_ENV
-            
-            # Delay random 1 - 20 menit agar jamnya gak pas
-            RANDOM_DELAY=$(( $RANDOM % 1200 ))
-            echo "Sleeping for $RANDOM_DELAY seconds before committing (1-20 minutes)..."
-            sleep $RANDOM_DELAY
-          fi
+          echo "RUN_COMMIT=true" >> $GITHUB_ENV
 
       - name: Update Activity Log with Random Commits
         if: env.RUN_COMMIT == 'true'
