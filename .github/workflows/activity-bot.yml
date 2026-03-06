@@ -37,8 +37,8 @@ jobs:
       - name: Update Activity Log with Random Commits
         if: env.RUN_COMMIT == 'true'
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "fathrhys"
+          git config --global user.email "fadhilfathirahesya@gmail.com"
           
           # Array pesan commit yang berbeda-beda
           MESSAGES=(
