@@ -5,6 +5,10 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { getCsrfToken, withCsrfHeaders } from "@/lib/csrfClient";
 import GrainBackground from "@/components/ui/GrainBackground";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
+import "highlight.js/styles/github-dark.css";
 
 const CATS = [
   { value: "WEB", label: "Web" },
@@ -89,6 +93,7 @@ export default function EditProjectPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [msg, setMsg] = useState("");
+  const [previewMode, setPreviewMode] = useState(false);
 
   // preview URL aman (revoke)
   const objectUrl = useMemo(() => {
@@ -335,14 +340,38 @@ export default function EditProjectPage() {
 
               {/* Description */}
               <div className="space-y-2">
-                <p className="label">Description (Markdown)</p>
-                <textarea
-                  className="field"
-                  style={{ minHeight: 240 }}
-                  placeholder="Tulis deskripsi / writeup pakai Markdown (README style)."
-                  value={form.description}
-                  onChange={(e) => setForm({ ...form, description: e.target.value })}
-                />
+                <div className="flex items-center justify-between">
+                  <p className="label">Description (Markdown)</p>
+                  <button
+                    type="button"
+                    onClick={() => setPreviewMode(!previewMode)}
+                    className="rounded-lg bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white hover:bg-slate-800"
+                  >
+                    {previewMode ? "Edit" : "Preview"}
+                  </button>
+                </div>
+                {previewMode ? (
+                  <div className="md field" style={{ minHeight: 240 }}>
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeHighlight]}
+                      components={{
+                        a: (props) => <a {...props} target="_blank" rel="noopener noreferrer" />,
+                        hr: () => <hr />,
+                      }}
+                    >
+                      {form.description || "*Belum ada deskripsi*"}
+                    </ReactMarkdown>
+                  </div>
+                ) : (
+                  <textarea
+                    className="field"
+                    style={{ minHeight: 240 }}
+                    placeholder="Tulis deskripsi / writeup pakai Markdown (README style)."
+                    value={form.description}
+                    onChange={(e) => setForm({ ...form, description: e.target.value })}
+                  />
+                )}
               </div>
 
               {/* Meta */}

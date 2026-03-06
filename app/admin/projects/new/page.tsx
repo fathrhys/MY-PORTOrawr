@@ -4,6 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { getCsrfToken, withCsrfHeaders } from "@/lib/csrfClient";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeHighlight from "rehype-highlight";
+import "highlight.js/styles/github-dark.css";
 
 const CATS = [
   { value: "WEB", label: "Web" },
@@ -64,6 +68,7 @@ export default function NewProjectPage() {
 
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
+  const [previewMode, setPreviewMode] = useState(false);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -179,12 +184,39 @@ export default function NewProjectPage() {
             value={slug}
             onChange={(e) => setSlug(e.target.value)}
           />
-          <textarea
-            className="h-32 w-full rounded-xl border border-zinc-800 bg-zinc-900/40 px-4 py-3 text-sm"
-            placeholder="Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-semibold text-zinc-100">Description (Markdown)</span>
+              <button
+                type="button"
+                onClick={() => setPreviewMode(!previewMode)}
+                className="rounded-lg bg-zinc-800 px-3 py-1.5 text-xs font-semibold text-zinc-300 hover:bg-zinc-700"
+              >
+                {previewMode ? "Edit" : "Preview"}
+              </button>
+            </div>
+            {previewMode ? (
+              <div className="md field min-h-[128px] w-full rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 font-sans text-sm text-zinc-200">
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeHighlight]}
+                  components={{
+                    a: (props) => <a {...props} target="_blank" rel="noopener noreferrer" />,
+                    hr: () => <hr />,
+                  }}
+                >
+                  {description || "*Belum ada deskripsi*"}
+                </ReactMarkdown>
+              </div>
+            ) : (
+              <textarea
+                className="h-32 w-full rounded-xl border border-zinc-800 bg-zinc-900/40 px-4 py-3 text-sm text-zinc-100"
+                placeholder="Description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            )}
+          </div>
           <input
             className="w-full rounded-xl border border-zinc-800 bg-zinc-900/40 px-4 py-3 text-sm"
             placeholder="Year (opsional)"
