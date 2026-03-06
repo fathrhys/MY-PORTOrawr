@@ -25,30 +25,7 @@ export const metadata: Metadata = {
   },
 };
 
-/**
- * Script kecil buat:
- * - ambil theme dari localStorage (light/dark)
- * - kalau belum ada, ikut prefers-color-scheme
- * - set class "dark" di <html>
- * NOTE: inline script supaya gak flicker pas load awal.
- */
-function ThemeInitScript() {
-  const code = `
-(function(){
-  try {
-    var saved = localStorage.getItem("theme"); // "light" | "dark" | null
-    var prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    var isDark = saved ? (saved === "dark") : prefersDark;
-
-    var root = document.documentElement;
-    if (isDark) root.classList.add("dark");
-    else root.classList.remove("dark");
-  } catch (e) {}
-})();
-  `.trim();
-
-  return <script dangerouslySetInnerHTML={{ __html: code }} />;
-}
+import { Providers } from "@/components/Providers";
 
 export default function RootLayout({
   children,
@@ -57,12 +34,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" suppressHydrationWarning>
-      <head>
-        <ThemeInitScript />
-      </head>
-
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
+        <Providers attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          {children}
+        </Providers>
       </body>
     </html>
   );
