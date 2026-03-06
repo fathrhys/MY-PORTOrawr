@@ -2,7 +2,7 @@ name: GitHub Activity Bot
 
 on:
   schedule:
-    - cron: '17 * * * *' # Menjalankan setiap jam. (Meski jalan per jam, kita tetap pakai delay)
+    - cron: '*/15 * * * *' # Menjalankan setiap 15 menit
   workflow_dispatch:
 
 jobs:
