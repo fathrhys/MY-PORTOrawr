@@ -27,6 +27,7 @@ export const metadata: Metadata = {
 
 import { Providers } from "@/components/Providers";
 import LoadingScreen from "@/components/ui/LoadingScreen";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 export default function RootLayout({
   children,
@@ -35,9 +36,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased cursor-none`}>
         <Providers attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <LoadingScreen />
+          <CustomCursor />
           {children}
         </Providers>
       </body>
