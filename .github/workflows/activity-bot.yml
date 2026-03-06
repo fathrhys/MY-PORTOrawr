@@ -2,9 +2,9 @@ name: GitHub Activity Bot
 
 on:
   schedule:
-    # Berjalan setiap hari pada jam 00:00 UTC (sekitar jam 7 pagi WIB)
-    - cron: '0 0 * * *'
-  workflow_dispatch: # Memungkinkan kamu menjalankan bot secara manual
+    # Berjalan 6 kali sehari setiap 4 jam (00:00, 04:00, 08:00, 12:00, 16:00, 20:00 UTC)
+    - cron: '0 0,4,8,12,16,20 * * *'
+  workflow_dispatch:
 
 jobs:
   auto-commit:
@@ -18,16 +18,28 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Update Activity Log
+      - name: Update Activity Log with Random Commits
         run: |
-          # Membuat/mengupdate file dengan tanggal hari ini
-          echo "Last bot activity: $(date)" > .github-activity-log.txt
-          
-          # Konfigurasi user git
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
-          # Commit dan push
+          # Array pesan commit yang berbeda-beda
+          MESSAGES=(
+            "chore: update activity log"
+            "docs: sync daily activity"
+            "fix: minor typo in log"
+            "refactor: restructure activity log format"
+            "style: formatting log entries"
+            "perf: optimize activity tracking"
+          )
+          
+          # Ambil pesan acak
+          RANDOM_MESSAGE=${MESSAGES[$RANDOM % ${#MESSAGES[@]}]}
+          
+          # Buat perubahan yang berbeda setiap kali
+          echo "Activity log update at: $(date --utc)" >> .github-activity-log.txt
+          echo "Random stat: $(( $RANDOM % 1000 ))" >> .github-activity-log.txt
+          
           git add .github-activity-log.txt
-          git diff --quiet && git diff --staged --quiet || git commit -m "chore: auto-update activity log [skip ci]"
+          git diff --quiet && git diff --staged --quiet || git commit -m "$RANDOM_MESSAGE [skip ci]"
           git push origin HEAD:${{ github.ref }}
