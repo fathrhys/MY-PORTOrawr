@@ -1,8 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Nashwan's Portfolio v2
 
-## Getting Started
+This is the second iteration of my personal portfolio and project showcase web application, rebuilt specifically for performance, simplicity, and ease of content management.
 
-First, run the development server:
+Initially built dynamically with Next.js 14, **Prisma ORM**, and **MySQL**, this project has been heavily refactored (v2) to a **100% Statically Generated (SSG)** architecture powered by pure Markdown files (`.md`).
+
+## ✨ Features
+
+- **Blazing Fast (SSG)**: Entire site generates static HTML at build time (`output: "export"`). No database queries, no server-side rendering latency.
+- **Markdown Driven Content**: Project write-ups and CTF walkthroughs are simply written in `.md` files under the `content/projects/` directory.
+- **Beautiful Typography**: Uses `@tailwindcss/typography`, `react-markdown`, `remark-gfm`, and `rehype-highlight` for beautiful rendering of code blocks and prose.
+- **Built-in Certificates Tracker**: Simple tracking of achieved certificates and credentials.
+- **Interactive Terminal**: A fun `kamalOS` / `NashwanOS` interactive terminal simulation built in React.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router, Turbopack)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) + Framer Motion
+- **Content Parsing**: `gray-matter`, `react-markdown`
+
+## 🚀 Getting Started
+
+First, install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -10,45 +38,42 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📝 Writing Content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+To add a new project or CTF write-up, simply create a new `.md` file inside `content/projects/`. 
+Use the following frontmatter template at the top of your markdown file:
 
-## Environment
+```markdown
+---
+title: "Your Project Title"
+description: "A short description of the project."
+year: 2026
+category: "WEB" # Valid categories: WEB, MOBILE, AI, GAME, CTF, OTHER
+techStack: "React, Tailwind, etc"
+githubUrl: "https://github.com/your-username/repo"
+demoUrl: "https://your-demo.com"
+coverUrl: "/uploads/cover.png"
+createdAt: "2026-03-10T10:00:00Z"
+updatedAt: "2026-03-10T10:00:00Z"
+---
 
-Copy `.env.example` to `.env`, then set:
-
-- `DATABASE_URL`
-- `ADMIN_PASSWORD_HASH`
-- `ADMIN_COOKIE_SECRET`
-- `SITE_URL`
-
-Generate `ADMIN_PASSWORD_HASH` (scrypt) with:
-
-```bash
-node -e "const { scryptSync, randomBytes } = require('crypto'); const pwd = process.argv[2]; if (!pwd) { console.error('Usage: node -e <script> -- <password>'); process.exit(1); } const salt = randomBytes(16); const key = scryptSync(pwd, salt, 32, { N: 16384, r: 8, p: 1 }); console.log(['scrypt',16384,8,1,salt.toString('base64url'),key.toString('base64url')].join('$'));" -- "your_password_here"
+# Your Project Details
+Write your markdown content here...
 ```
 
-Note: If you put the hash in `.env`, escape `$` as `$$` (Next.js env expansion). The app will normalize it.
-Alternative: set `ADMIN_PASSWORD_HASH_B64` with base64url of the full hash string to avoid `$` expansion.
+## 📦 Deployment (Static Export)
 
-## Learn More
+This project is configured for static export. 
+To generate the static HTML files:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This will create an `out/` directory containing the static assets, which can be deployed to any static hosting provider like Netlify, GitHub Pages, or Vercel.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Note:** Since the project uses `output: "export"`, features requiring a Node.js server (like Next.js API Routes or Image Optimization with default loaders) are not supported out-of-the-box.
