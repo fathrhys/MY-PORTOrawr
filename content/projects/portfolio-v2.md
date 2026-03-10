@@ -4,8 +4,8 @@ description: "Website portfolio terbaru yang dibangun menggunakan Next.js App Ro
 year: 2026
 category: "WEB"
 techStack: "Next.js, TailwindCSS, Markdown"
-githubUrl: "https://github.com/kamal/porto-v2"
-demoUrl: "https://porto-kamal.vercel.app"
+githubUrl: "https://github.com/fathrhys/MY-PORTOrawr"
+demoUrl: "https://ahmadnashwan.my.id"
 coverUrl: "/uploads/cover-porto-v2.png"
 createdAt: "2026-03-09T10:00:00Z"
 updatedAt: "2026-03-09T10:00:00Z"
