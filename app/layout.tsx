@@ -16,10 +16,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: getSiteUrl(),
   title: {
-    default: "Kamal Portfolio",
-    template: "%s | Kamal",
+    default: "Nashwan Portfolio",
+    template: "%s | Nashwan",
   },
-  description: "Portfolio dan writeups Kamal.",
+  description: "Portfolio dan writeups Nashwan.",
   alternates: {
     canonical: "/",
   },

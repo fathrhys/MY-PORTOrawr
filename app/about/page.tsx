@@ -7,13 +7,13 @@ import GrainBackground from "@/components/ui/GrainBackground";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Profil singkat, skill, dan cara kerja Kamal.",
+  description: "Profil singkat, skill, dan cara kerja Nashwan.",
   alternates: {
     canonical: "/about",
   },
   openGraph: {
-    title: "About - Kamal",
-    description: "Profil singkat, skill, dan cara kerja Kamal.",
+    title: "About - Nashwan",
+    description: "Profil singkat, skill, dan cara kerja Nashwan.",
     url: "/about",
     images: [{ url: "/og.svg" }],
   },

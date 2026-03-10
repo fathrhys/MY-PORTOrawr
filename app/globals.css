@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 /* =========================
    THEME TOKENS (CSS VARS)
@@ -7,15 +8,21 @@
 
 :root {
   /* base */
-  --bg: #fbfaf7;              /* background */
-  --surface: rgba(255,255,255,0.85);  /* card / panel */
-  --surface-solid: #ffffff;   /* card solid */
-  --text: #0f172a;            /* text utama */
-  --muted: #475569;           /* text sekunder */
-  --ring: rgba(15,23,42,0.12);
+  --bg: #fbfaf7;
+  /* background */
+  --surface: rgba(255, 255, 255, 0.85);
+  /* card / panel */
+  --surface-solid: #ffffff;
+  /* card solid */
+  --text: #0f172a;
+  /* text utama */
+  --muted: #475569;
+  /* text sekunder */
+  --ring: rgba(15, 23, 42, 0.12);
 
   /* accent */
-  --accent: #0f172a;          /* tombol utama, highlight */
+  --accent: #0f172a;
+  /* tombol utama, highlight */
   --accentText: #ffffff;
 
   /* optional: link */
@@ -28,11 +35,11 @@
 /* Dark mode (aktif kalau <html class="dark">) */
 html.dark {
   --bg: #0b0f17;
-  --surface: rgba(255,255,255,0.06);
-  --surface-solid: rgba(255,255,255,0.08);
+  --surface: rgba(255, 255, 255, 0.06);
+  --surface-solid: rgba(255, 255, 255, 0.08);
   --text: #e5e7eb;
   --muted: #94a3b8;
-  --ring: rgba(255,255,255,0.12);
+  --ring: rgba(255, 255, 255, 0.12);
 
   /* accent di dark (bisa kamu ubah) */
   --accent: #fbbf24;
@@ -85,19 +92,38 @@ a {
 /* Shared effects */
 .grain {
   background-image:
-    radial-gradient(circle at 20% 10%, rgba(15,23,42,0.06), transparent 55%),
-    radial-gradient(circle at 85% 30%, rgba(15,23,42,0.04), transparent 55%),
-    radial-gradient(circle at 35% 85%, rgba(245,158,11,0.08), transparent 55%);
+    radial-gradient(circle at 20% 10%, rgba(15, 23, 42, 0.06), transparent 55%),
+    radial-gradient(circle at 85% 30%, rgba(15, 23, 42, 0.04), transparent 55%),
+    radial-gradient(circle at 35% 85%, rgba(245, 158, 11, 0.08), transparent 55%);
 }
 
 @keyframes floaty {
-  0% { transform: translate3d(0,0,0) scale(1); opacity: 0.35; filter: blur(70px); }
-  50% { transform: translate3d(30px,-16px,0) scale(1.05); opacity: 0.5; filter: blur(78px); }
-  100% { transform: translate3d(0,0,0) scale(1); opacity: 0.35; filter: blur(70px); }
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.35;
+    filter: blur(70px);
+  }
+
+  50% {
+    transform: translate3d(30px, -16px, 0) scale(1.05);
+    opacity: 0.5;
+    filter: blur(78px);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.35;
+    filter: blur(70px);
+  }
 }
 
-.blobA { animation: floaty 18s ease-in-out infinite; }
-.blobB { animation: floaty 22s ease-in-out infinite reverse; }
+.blobA {
+  animation: floaty 18s ease-in-out infinite;
+}
+
+.blobB {
+  animation: floaty 22s ease-in-out infinite reverse;
+}
 
 .u {
   background-image: linear-gradient(currentColor, currentColor);
@@ -106,11 +132,19 @@ a {
   background-repeat: no-repeat;
   transition: background-size 0.2s ease;
 }
-.u:hover { background-size: 100% 2px; }
 
-.press:active { transform: translateY(1px); }
+.u:hover {
+  background-size: 100% 2px;
+}
 
-.break-anywhere { overflow-wrap: anywhere; word-break: break-word; }
+.press:active {
+  transform: translateY(1px);
+}
+
+.break-anywhere {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
 
 /* Markdown */
 .md {
@@ -119,19 +153,62 @@ a {
   min-width: 0;
   color: var(--text);
 }
-.md h1 { font-size: 32px; line-height: 1.15; margin: 24px 0 12px; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
-.md h2 { font-size: 24px; line-height: 1.25; margin: 24px 0 12px; font-weight: 800; letter-spacing: -0.01em; color: var(--text); }
-.md h3 { font-size: 18px; line-height: 1.35; margin: 20px 0 10px; font-weight: 800; color: var(--text); }
-.md p { margin: 12px 0; color: var(--muted); }
-.md a { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; color: var(--accent); }
-.md ul, .md ol { margin: 12px 0 12px 22px; color: var(--muted); }
-.md li { margin: 6px 0; }
+
+.md h1 {
+  font-size: 32px;
+  line-height: 1.15;
+  margin: 24px 0 12px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.md h2 {
+  font-size: 24px;
+  line-height: 1.25;
+  margin: 24px 0 12px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.md h3 {
+  font-size: 18px;
+  line-height: 1.35;
+  margin: 20px 0 10px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.md p {
+  margin: 12px 0;
+  color: var(--muted);
+}
+
+.md a {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: var(--accent);
+}
+
+.md ul,
+.md ol {
+  margin: 12px 0 12px 22px;
+  color: var(--muted);
+}
+
+.md li {
+  margin: 6px 0;
+}
+
 .md hr {
   border: 0;
   height: 1px;
   margin: 24px 0;
   background: linear-gradient(to right, transparent, var(--ring), transparent);
 }
+
 .md blockquote {
   margin: 16px 0;
   padding: 12px 16px;
@@ -141,6 +218,7 @@ a {
   color: var(--muted);
   font-style: italic;
 }
+
 .md pre {
   margin: 16px 0;
   border-radius: 16px;
@@ -148,16 +226,22 @@ a {
   overflow-x: auto;
   max-width: 100%;
   min-width: 0;
-  background: #0f172a; /* Keep code blocks consistently dark */
+  background: #0f172a;
+  /* Keep code blocks consistently dark */
   border: 1px solid var(--ring);
 }
+
 .md pre code {
   display: block;
   min-width: 0;
   white-space: pre;
   color: #e2e8f0;
 }
-.md pre code.hljs { color: #e2e8f0; }
+
+.md pre code.hljs {
+  color: #e2e8f0;
+}
+
 .md code:not(pre code) {
   background: var(--surface);
   border: 1px solid var(--ring);
@@ -166,6 +250,7 @@ a {
   font-weight: 600;
   color: var(--accent);
 }
+
 .md table {
   width: 100%;
   border-collapse: collapse;
@@ -173,9 +258,41 @@ a {
   border-radius: 14px;
   margin: 16px 0;
 }
-.md th, .md td {
+
+.md th,
+.md td {
   border: 1px solid var(--ring);
   padding: 10px 12px;
   font-size: 14px;
 }
-.md th { background: var(--surface); text-align: left; }
+
+.md th {
+  background: var(--surface);
+  text-align: left;
+}
+
+/* Custom Markdown Figures */
+figure.shot {
+  margin: 40px 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--ring);
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+figure.shot img {
+  width: 100%;
+  display: block;
+  margin: 0;
+  border-radius: 0;
+}
+
+figure.shot figcaption {
+  padding: 14px 20px;
+  font-size: 14px;
+  color: var(--muted);
+  text-align: center;
+  border-top: 1px solid var(--ring);
+  background: var(--surface-solid);
+}

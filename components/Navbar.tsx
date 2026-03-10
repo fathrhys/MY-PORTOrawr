@@ -9,6 +9,7 @@ import { Moon, Sun } from "lucide-react";
 const items = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
+  { href: "/certificates", label: "Certificates" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -45,7 +46,7 @@ export default function Navbar() {
           ].join(" ")}
         >
           <Link href="/" className="text-sm font-semibold text-slate-900" onClick={() => setMobileOpen(false)}>
-            kamal<span className="text-slate-500">.dev</span>
+            Nashwan<span className="text-slate-500">.dev</span>
           </Link>
 
           {/* Desktop Nav */}

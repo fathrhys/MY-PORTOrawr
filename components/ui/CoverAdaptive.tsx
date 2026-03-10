@@ -45,7 +45,7 @@ export default function CoverAdaptive({
     );
   }
   return (
-    <div className="relative h-full w-full bg-gradient-to-br from-white via-slate-50 to-amber-50">
+    <div ref={ref} className="relative h-full w-full bg-gradient-to-br from-white via-slate-50 to-amber-50">
       <div className="absolute inset-0 opacity-60 [background-image:radial-gradient(circle_at_30%_20%,rgba(2,6,23,0.08),transparent_50%),radial-gradient(circle_at_70%_55%,rgba(2,6,23,0.06),transparent_55%)]" />
       <div
         className={`absolute inset-0 bg-gradient-to-br ${tintClass ?? "from-slate-500/10 via-transparent to-transparent"

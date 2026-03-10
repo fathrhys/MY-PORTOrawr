@@ -1,4 +1,4 @@
-import { ProjectCategory } from "@prisma/client";
+export type ProjectCategory = "WEB" | "CTF" | "AI" | "GAME" | "TOOLS" | "OTHER";
 
 export const LABEL: Record<ProjectCategory, string> = {
   WEB: "Web",

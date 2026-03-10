@@ -11,13 +11,13 @@ import { CATEGORY_STYLES, LABEL, clampText } from "@/lib/projectUi";
 
 export const metadata: Metadata = {
   title: "Home",
-  description: "Portfolio Kamal: project, writeups, dan build log.",
+  description: "Portfolio Nashwan: project, writeups, dan build log.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Kamal Portfolio",
-    description: "Portfolio Kamal: project, writeups, dan build log.",
+    title: "Nashwan Portfolio",
+    description: "Portfolio Nashwan: project, writeups, dan build log.",
     url: "/",
     images: [{ url: "/og.svg" }],
   },
@@ -67,7 +67,7 @@ export default async function HomePage() {
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">
                     <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
-                    Kamal&apos;s Portfolio
+                    Nashwan&apos;s Portfolio
                   </span>
                   <span className="text-xs text-slate-500">
                     Projects • Writeups • Build log
@@ -75,7 +75,7 @@ export default async function HomePage() {
                 </div>
 
                 <h1 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight">
-                  Halo, aku <span className="text-slate-950">Kamal</span>.
+                  Halo, aku <span className="text-slate-950">Ahmad Fadhil Fathi R. N.</span>
                 </h1>
 
                 <div className="mt-4">

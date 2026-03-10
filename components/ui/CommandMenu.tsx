@@ -76,6 +76,13 @@ export default function CommandMenu() {
                                 Projects
                             </Command.Item>
                             <Command.Item
+                                onSelect={() => runCommand(() => router.push("/certificates"))}
+                                className="relative flex cursor-default select-none items-center rounded-xl px-2 py-2.5 text-sm outline-none aria-selected:bg-slate-100 aria-selected:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:aria-selected:bg-white/10 dark:aria-selected:text-white"
+                            >
+                                <User className="mr-3 h-4 w-4" />
+                                Certificates
+                            </Command.Item>
+                            <Command.Item
                                 onSelect={() => runCommand(() => router.push("/contact"))}
                                 className="relative flex cursor-default select-none items-center rounded-xl px-2 py-2.5 text-sm outline-none aria-selected:bg-slate-100 aria-selected:text-slate-900 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 dark:aria-selected:bg-white/10 dark:aria-selected:text-white"
                             >

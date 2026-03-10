@@ -31,7 +31,7 @@ export default function LoadingScreen() {
                         transition={{ duration: 0.5 }}
                         className="mb-8"
                     >
-                        <span className="text-5xl font-bold tracking-tighter">kamal<span className="text-amber-400">.dev</span></span>
+                        <span className="text-5xl font-bold tracking-tighter">Nashwan<span className="text-amber-400">.dev</span></span>
                     </motion.div>
 
                     {/* Progress Bar Container */}

@@ -51,7 +51,7 @@ export default function TerminalPage() {
                 );
                 break;
             case "whoami":
-                output = "guest@kamal.dev\n\nKamaluddin - Cloud & DevOps Engineer.\nPassionate about Cybersecurity, Web Development, and Building scalable systems.";
+                output = "guest@Nashwan.dev\n\nAhmad Fadhil Fathi R. N. - Cloud & DevOps Engineer.\nPassionate about Cybersecurity, Web Development, and Building scalable systems.";
                 break;
             case "ls":
                 output = (
@@ -76,7 +76,7 @@ export default function TerminalPage() {
                 return; // Don't add clear command to history
             default:
                 if (lower.startsWith("sudo")) {
-                    output = "kamal is not in the sudoers file. This incident will be reported.";
+                    output = "Nashwan is not in the sudoers file. This incident will be reported.";
                 } else {
                     output = `Command not found: ${trimmed}. Type 'help' for available commands.`;
                 }
@@ -101,13 +101,13 @@ export default function TerminalPage() {
                 {/* Header */}
                 <div className="mb-6 opacity-80">
                     <pre className="text-emerald-400 mb-2 whitespace-pre-wrap text-xs md:text-sm">
-                        {` _                       _      _           
-| | ____ _ _ __ ___   __ _| | ___| | _____   __
-| |/ / _\` | '_ \` _ \\ / _\` | |/ _ \\ |/ _ \\ \\ / /
-|   < (_| | | | | | | (_| | |  __/ |  __/\\ V / 
-|_|\\_\\__,_|_| |_| |_|\\__,_|_|\\___|_|\\___| \\_/  `}
+                        {` _   _           _                             
+| \\ | | __ _ ___| |____      ____ _ _ __  
+|  \\| |/ _\` / __| '_ \\ \\ /\\ / / _\` | '_ \\ 
+| |\\  | (_| \\__ \\ | | \\ V  V / (_| | | | |
+|_| \\_|\\__,_|___/_| |_|\\_/\\_/ \\__,_|_| |_|`}
                     </pre>
-                    <p className="text-emerald-300 mt-4">Welcome to kamalOS v2.0.0 (tty1)</p>
+                    <p className="text-emerald-300 mt-4">Welcome to NashwanOS v2.0.0 (tty1)</p>
                     <p className="text-emerald-300/60">Type 'help' to see available commands.</p>
                 </div>
 
@@ -116,7 +116,7 @@ export default function TerminalPage() {
                     {history.map((item, i) => (
                         <div key={i} className="flex flex-col gap-1">
                             <div className="flex items-center gap-2">
-                                <span className="text-emerald-400 font-bold">guest@kamal.dev</span>
+                                <span className="text-emerald-400 font-bold">guest@Nashwan.dev</span>
                                 <span className="text-emerald-400/50">:~$</span>
                                 <span className="text-emerald-100">{item.command}</span>
                             </div>
@@ -127,7 +127,7 @@ export default function TerminalPage() {
 
                 {/* Input Line */}
                 <div className="flex items-center gap-2 mt-1">
-                    <span className="text-emerald-400 font-bold">guest@kamal.dev</span>
+                    <span className="text-emerald-400 font-bold">guest@Nashwan.dev</span>
                     <span className="text-emerald-400/50">:~$</span>
                     <input
                         ref={inputRef}
