@@ -1,7 +1,8 @@
-export type ProjectCategory = "WEB" | "CTF" | "AI" | "GAME" | "TOOLS" | "OTHER";
+export type ProjectCategory = "WEB" | "MOBILE" | "CTF" | "AI" | "GAME" | "TOOLS" | "OTHER";
 
 export const LABEL: Record<ProjectCategory, string> = {
   WEB: "Web",
+  MOBILE: "Mobile Apps",
   CTF: "Cyber/CTF",
   AI: "AI",
   GAME: "Game",
@@ -11,6 +12,7 @@ export const LABEL: Record<ProjectCategory, string> = {
 
 export const CATS: { key: ProjectCategory; title: string; desc: string }[] = [
   { key: "WEB", title: "Web Apps", desc: "Next.js, Laravel, Flask - rapi, cepat, responsive." },
+  { key: "MOBILE", title: "Mobile Apps", desc: "React Native, Expo, Android, iOS." },
   { key: "CTF", title: "Cyber / CTF", desc: "Writeup, forensics, crypto, dan catatan belajar." },
   { key: "AI", title: "AI", desc: "Eksperimen AI/ML kecil-kecilan dan tools bantu belajar." },
   { key: "GAME", title: "Game", desc: "Project game yang pernah aku bikin / eksperimen." },
@@ -28,6 +30,13 @@ export const CATEGORY_STYLES: Record<
     coverTint: "from-sky-500/15 via-transparent to-transparent",
     cardHover: "hover:shadow-[0_12px_30px_rgba(2,132,199,0.10)]",
     link: "text-sky-700 hover:text-sky-900",
+  },
+  MOBILE: {
+    chip: "bg-indigo-50 text-indigo-700 ring-1 ring-indigo-200",
+    dot: "bg-indigo-500",
+    coverTint: "from-indigo-500/15 via-transparent to-transparent",
+    cardHover: "hover:shadow-[0_12px_30px_rgba(99,102,241,0.10)]",
+    link: "text-indigo-700 hover:text-indigo-900",
   },
   CTF: {
     chip: "bg-violet-50 text-violet-700 ring-1 ring-violet-200",

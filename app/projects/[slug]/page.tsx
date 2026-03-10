@@ -99,7 +99,7 @@ export default async function ProjectDetailPage({
     .filter((p) => p.category === project.category && p.slug !== project.slug)
     .slice(0, 3);
 
-  const st = CATEGORY_STYLES[project.category];
+  const st = CATEGORY_STYLES[project.category] || CATEGORY_STYLES["OTHER"];
   const isCtf = project.category === "CTF";
   const writeupDownloadUrl = `/api/projects/${encodeURIComponent(project.slug)}/writeup`;
 
