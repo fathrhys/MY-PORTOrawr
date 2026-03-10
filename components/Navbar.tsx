@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
@@ -45,8 +46,9 @@ export default function Navbar() {
               : "border-slate-200 bg-white/55",
           ].join(" ")}
         >
-          <Link href="/" className="text-sm font-semibold text-slate-900" onClick={() => setMobileOpen(false)}>
-            Nashwan<span className="text-slate-500">.dev</span>
+          <Link href="/" className="flex items-center gap-2 text-sm font-semibold text-slate-900" onClick={() => setMobileOpen(false)}>
+            <Image src="/LOGO.png" alt="Nashwan.dev Logo" width={32} height={32} className="rounded-lg object-cover drop-shadow-sm" />
+            <span>Nashwan<span className="text-slate-500">.dev</span></span>
           </Link>
 
           {/* Desktop Nav */}
