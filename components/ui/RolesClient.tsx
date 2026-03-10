@@ -14,7 +14,7 @@ export default function RolesClient() {
           2000,
           "CTF Player",
           2000,
-          "Bug Hunter",
+          "Cloud Anthusiast",
           2000,
         ]}
         wrapper="span"

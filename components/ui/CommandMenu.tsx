@@ -103,7 +103,7 @@ export default function CommandMenu() {
                                 className="relative flex cursor-default select-none items-center rounded-xl px-2 py-2.5 text-sm outline-none aria-selected:bg-emerald-50 aria-selected:text-emerald-900 dark:aria-selected:bg-emerald-500/20 dark:aria-selected:text-emerald-400 text-emerald-600 dark:text-emerald-500 font-medium"
                             >
                                 <Terminal className="mr-3 h-4 w-4" />
-                                Terminal Mode (Hacker)
+                                Terminal Mode
                             </Command.Item>
                         </Command.Group>
 
