@@ -35,10 +35,10 @@ function StatPill({
   hint: string;
 }) {
   return (
-    <div className="rounded-2xl bg-white/80 dark:bg-slate-900/50 ring-1 ring-slate-200 dark:ring-white/10 px-4 py-3 shadow-[0_6px_20px_rgba(15,23,42,0.06)] dark:shadow-none">
-      <p className="text-[11px] font-medium tracking-wide text-slate-500 dark:text-slate-400">{label}</p>
-      <p className="mt-1 text-lg font-semibold text-slate-900 dark:text-slate-100">{value}</p>
-      <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">{hint}</p>
+    <div className="rounded-2xl bg-white/80 ring-1 ring-slate-200 px-4 py-3 shadow-[0_6px_20px_rgba(15,23,42,0.06)]">
+      <p className="text-[11px] font-medium tracking-wide text-slate-500">{label}</p>
+      <p className="mt-1 text-lg font-semibold text-slate-900">{value}</p>
+      <p className="mt-0.5 text-xs text-slate-500">{hint}</p>
     </div>
   );
 }
@@ -59,7 +59,7 @@ export default async function HomePage() {
   const featStyle = CATEGORY_STYLES[featCat];
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-[#fbfaf7] text-slate-900">
       <Navbar />
       <GrainBackground />
 
@@ -67,19 +67,19 @@ export default async function HomePage() {
         <section className="pt-6">
           <div className="grid gap-6 lg:gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-start">
             <Reveal>
-              <div className="rounded-3xl bg-white/70 dark:bg-slate-900/50 ring-1 ring-slate-200 dark:ring-white/10 p-5 sm:p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)] dark:shadow-none">
+              <div className="rounded-3xl bg-white/70 ring-1 ring-slate-200 p-5 sm:p-7 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="inline-flex items-center gap-2 rounded-full bg-slate-900 dark:bg-white/10 px-3 py-1 text-xs font-semibold text-white">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">
                     <span className="h-1.5 w-1.5 rounded-full bg-amber-300" />
                     Kamal&apos;s Portfolio
                   </span>
-                  <span className="text-xs text-slate-500 dark:text-slate-400">
+                  <span className="text-xs text-slate-500">
                     Projects • Writeups • Build log
                   </span>
                 </div>
 
-                <h1 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
-                  Halo, aku <span className="text-slate-950 dark:text-white font-bold">Kamal</span>.
+                <h1 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight">
+                  Halo, aku <span className="text-slate-950">Kamal</span>.
                 </h1>
 
                 <div className="mt-4">
@@ -139,7 +139,7 @@ export default async function HomePage() {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <div className="overflow-hidden rounded-3xl bg-white dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-white/10 shadow-[0_18px_60px_rgba(15,23,42,0.10)] dark:shadow-none">
+              <div className="overflow-hidden rounded-3xl bg-white ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.10)]">
                 <div className="relative h-44 sm:h-52">
                   <CoverAdaptive url={featured?.coverUrl} tintClass={featStyle.coverTint} />
                   <div className="absolute left-4 top-4 flex items-center gap-2">
@@ -250,8 +250,8 @@ export default async function HomePage() {
                   <Reveal key={p.id} delay={0.05 + idx * 0.05}>
                     <div
                       className={[
-                        "overflow-hidden rounded-3xl bg-white dark:bg-slate-900 ring-1 ring-slate-200 dark:ring-white/10 transition",
-                        "hover:-translate-y-1 hover:ring-slate-300 dark:hover:ring-white/20",
+                        "overflow-hidden rounded-3xl bg-white ring-1 ring-slate-200 transition",
+                        "hover:-translate-y-1 hover:ring-slate-300",
                         st.cardHover ?? "",
                       ].join(" ")}
                     >
@@ -376,16 +376,16 @@ export default async function HomePage() {
               ].map((s) => (
                 <div
                   key={s.year}
-                  className="w-[260px] sm:w-[220px] shrink-0 snap-start rounded-3xl bg-white dark:bg-slate-900 p-5 ring-1 ring-slate-200 dark:ring-white/10 shadow-[0_10px_30px_rgba(15,23,42,0.06)] dark:shadow-none"
+                  className="w-[260px] sm:w-[220px] shrink-0 snap-start rounded-3xl bg-white p-5 ring-1 ring-slate-200 shadow-[0_10px_30px_rgba(15,23,42,0.06)]"
                 >
                   <div
-                    className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold text-slate-900 dark:text-slate-100 ring-1 ${s.c} dark:ring-0 dark:bg-white/5`}
+                    className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold text-slate-900 ring-1 ${s.c}`}
                   >
-                    <span className="h-2 w-2 rounded-full bg-slate-900/70 dark:bg-white/70" />
+                    <span className="h-2 w-2 rounded-full bg-slate-900/70" />
                     {s.year}
                   </div>
-                  <h3 className="mt-4 text-lg font-semibold text-slate-900 dark:text-slate-100">{s.title}</h3>
-                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">{s.desc}</p>
+                  <h3 className="mt-4 text-lg font-semibold text-slate-900">{s.title}</h3>
+                  <p className="mt-2 text-sm text-slate-600">{s.desc}</p>
                 </div>
               ))}
             </div>
@@ -403,14 +403,14 @@ export default async function HomePage() {
 
           <div className="mt-7 grid gap-4 lg:grid-cols-2">
             <Reveal delay={0.05}>
-              <div className="rounded-3xl bg-white dark:bg-slate-900 p-7 ring-1 ring-slate-200 dark:ring-white/10 shadow-[0_18px_60px_rgba(15,23,42,0.08)] dark:shadow-none">
+              <div className="rounded-3xl bg-white p-7 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Sekarang lagi belajar</h3>
-                  <span className="rounded-full bg-slate-900 dark:bg-white/10 px-3 py-1 text-xs font-semibold text-white">
+                  <h3 className="text-lg font-semibold text-slate-900">Sekarang lagi belajar</h3>
+                  <span className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">
                     active
                   </span>
                 </div>
-                <ul className="mt-4 space-y-2 text-sm text-slate-800 dark:text-slate-300">
+                <ul className="mt-4 space-y-2 text-sm text-slate-800">
                   <li className="flex gap-2">
                     <span className="mt-1 h-2 w-2 rounded-full bg-sky-500" />
                     Forensics dasar (file carving, log analysis)
@@ -464,16 +464,16 @@ export default async function HomePage() {
 
         <section className="mt-16">
           <Reveal>
-            <div className="rounded-3xl bg-white dark:bg-slate-900 p-8 ring-1 ring-slate-200 dark:ring-white/10 shadow-[0_18px_60px_rgba(15,23,42,0.08)] dark:shadow-none">
+            <div className="rounded-3xl bg-white p-8 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
               <div className="grid gap-6 lg:grid-cols-[1.2fr_.8fr] lg:items-center">
                 <div>
-                  <p className="text-xs font-semibold tracking-wider text-slate-500 dark:text-slate-400 uppercase">
+                  <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
                     Collaboration
                   </p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900 dark:text-slate-100">
+                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
                     Let&apos;s build something useful.
                   </h2>
-                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+                  <p className="mt-2 text-sm text-slate-600">
                     Kalau kamu pengen kolaborasi atau ngobrol soal project/CTF, langsung aja.
                   </p>
                 </div>
