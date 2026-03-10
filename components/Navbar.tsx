@@ -4,8 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { useTheme } from "next-themes";
-import { Moon, Sun } from "lucide-react";
 
 const items = [
   { href: "/", label: "Home" },
@@ -20,7 +18,6 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
-  const { theme, setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -89,15 +86,6 @@ export default function Navbar() {
               </span>
             </button>
 
-            {mounted && (
-              <button
-                onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-                className="ml-2 rounded-xl p-2 text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/10 transition-colors"
-                aria-label="Toggle Dark Mode"
-              >
-                {resolvedTheme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-              </button>
-            )}
           </nav>
 
           {/* Mobile Hamburger */}
@@ -176,18 +164,6 @@ export default function Navbar() {
                   <span className="rounded bg-slate-200 px-2 py-0.5 text-xs text-slate-500 dark:bg-white/10 dark:text-slate-400">⌘K</span>
                 </button>
 
-                {mounted && (
-                  <button
-                    onClick={() => {
-                      setTheme(resolvedTheme === "dark" ? "light" : "dark");
-                      setMobileOpen(false);
-                    }}
-                    className="flex shrink-0 items-center justify-center rounded-xl px-4 py-3 bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-white/10 dark:text-slate-200 dark:hover:bg-white/20 transition-colors"
-                    aria-label="Toggle Dark Mode"
-                  >
-                    {resolvedTheme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
-                  </button>
-                )}
               </div>
             </nav>
           </div>

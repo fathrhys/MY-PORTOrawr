@@ -1,15 +1,15 @@
 "use client";
 
-import { ThemeProvider as NextThemesProvider, ThemeProviderProps } from "next-themes";
+
 import { Toaster } from "sonner";
 import CommandMenu from "./ui/CommandMenu";
 
-export function Providers({ children, ...props }: ThemeProviderProps) {
+export function Providers({ children }: { children: React.ReactNode }) {
     return (
-        <NextThemesProvider {...props}>
+        <>
             {children}
             <CommandMenu />
-            <Toaster position="bottom-right" richColors theme="system" />
-        </NextThemesProvider>
+            <Toaster position="bottom-right" richColors theme="light" />
+        </>
     );
 }

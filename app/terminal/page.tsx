@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, KeyboardEvent } from "react";
 import { useRouter } from "next/navigation";
-import { useTheme } from "next-themes";
+
 
 type HistoryItem = {
     command: string;
@@ -15,14 +15,11 @@ export default function TerminalPage() {
     const inputRef = useRef<HTMLInputElement>(null);
     const endRef = useRef<HTMLDivElement>(null);
     const router = useRouter();
-    const { setTheme } = useTheme();
 
     // Focus input automatically
     useEffect(() => {
         inputRef.current?.focus();
-        // Force dark mode for terminal
-        setTheme("dark");
-    }, [setTheme]);
+    }, []);
 
     // Auto scroll to bottom
     useEffect(() => {
