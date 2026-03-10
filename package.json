@@ -13,6 +13,7 @@
     "@prisma/client": "^7.2.0",
     "cmdk": "^1.1.1",
     "framer-motion": "^12.26.2",
+    "gray-matter": "^4.0.3",
     "highlight.js": "^11.11.1",
     "lucide-react": "^0.577.0",
     "mariadb": "^3.4.5",

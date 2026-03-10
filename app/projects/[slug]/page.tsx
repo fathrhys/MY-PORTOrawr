@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { prisma } from "@/lib/prisma";
+import { getProjectBySlug, getAllProjects } from "@/lib/markdown";
 import Navbar from "@/components/Navbar";
 import Reveal from "@/components/ui/Reveal";
 import CoverAdaptive from "@/components/ui/CoverAdaptive";
@@ -14,8 +14,14 @@ import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css";
 
-export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  const projects = getAllProjects();
+  return projects.map((p) => ({
+    slug: p.slug,
+  }));
+}
 
 export async function generateMetadata({
   params,
@@ -31,7 +37,7 @@ export async function generateMetadata({
   }
   let project = null;
   try {
-    project = await prisma.project.findUnique({ where: { slug } });
+    project = getProjectBySlug(slug);
   } catch {
     return {
       title: "Projects",
@@ -83,15 +89,14 @@ export default async function ProjectDetailPage({
     slug = p.slug;
   }
 
-  const project = await prisma.project.findUnique({ where: { slug } });
+  const project = getProjectBySlug(slug);
 
   if (!project) notFound();
 
-  const relatedProjects = await prisma.project.findMany({
-    where: { category: project.category, NOT: { id: project.id } },
-    orderBy: { createdAt: "desc" },
-    take: 3,
-  });
+  const allProjects = getAllProjects();
+  const relatedProjects = allProjects
+    .filter((p) => p.category === project.category && p.slug !== project.slug)
+    .slice(0, 3);
 
   const st = CATEGORY_STYLES[project.category];
   const isCtf = project.category === "CTF";
@@ -149,7 +154,7 @@ export default async function ProjectDetailPage({
                     </p>
                   ) : null}
 
-                  <div className="md mt-4">
+                  <div className="prose prose-slate dark:prose-invert mt-6 max-w-none">
                     <ReactMarkdown
                       remarkPlugins={[remarkGfm]}
                       rehypePlugins={[rehypeHighlight]}
@@ -158,7 +163,7 @@ export default async function ProjectDetailPage({
                         hr: () => <hr />,
                       }}
                     >
-                      {project.description}
+                      {project.content}
                     </ReactMarkdown>
                   </div>
 
@@ -260,7 +265,7 @@ export default async function ProjectDetailPage({
 
             <div className="mt-7 grid gap-4 lg:grid-cols-3">
               {relatedProjects.map((r, idx) => (
-                <Reveal key={r.id} delay={0.03 + idx * 0.05}>
+                <Reveal key={r.slug} delay={0.03 + idx * 0.05}>
                   <Link
                     href={`/projects/${encodeURIComponent(r.slug)}`}
                     className="group overflow-hidden rounded-3xl bg-white ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:ring-slate-300 dark:bg-white/5 dark:ring-white/10 dark:hover:ring-white/20"

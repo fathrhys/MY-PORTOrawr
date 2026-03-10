@@ -19,26 +19,20 @@ export default function ContactPage() {
     setStatus("loading");
     setMsg("");
 
-    const res = await fetch("/api/contact", {
+    const res = await fetch("https://formspree.io/f/ganti_dengan_id_form_kamu", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, content }),
+      body: JSON.stringify({ name, email, message: content }),
     });
 
-    const data = (await res.json().catch(() => null)) as unknown;
-
     if (!res.ok) {
-      const err =
-        data && typeof data === "object" && "error" in data && typeof (data as { error?: unknown }).error === "string"
-          ? (data as { error: string }).error
-          : null;
       setStatus("err");
-      toast.error(err || "Gagal mengirim pesan");
+      toast.error("Gagal mengirim pesan. Pastikan ID Formspree sudah diisi di kode.");
       return;
     }
 
     setStatus("ok");
-    toast.success("Terkirim! Pesan kamu masuk ke database.");
+    toast.success("Terkirim! Pesan kamu akan masuk ke email.");
     setName("");
     setEmail("");
     setContent("");
@@ -78,7 +72,7 @@ export default function ContactPage() {
                 <div className="rounded-3xl bg-white p-6 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
                   <h1 className="text-3xl font-semibold tracking-tight text-slate-950">Kontak</h1>
                   <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-600">
-                    Kirim pesan lewat form ini. Nanti masuk ke database dan bisa kamu lihat di dashboard admin.
+                    Kirim pesan lewat form ini. Nanti akan langsung diteruskan ke email pribadiku.
                   </p>
 
                   <form onSubmit={onSubmit} className="mt-6 space-y-4">
@@ -201,20 +195,14 @@ export default function ContactPage() {
                 <div>
                   <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">Next</p>
                   <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
-                    Mau lihat dashboard admin?
+                    Suka dengan website ini?
                   </h2>
                   <p className="mt-2 text-sm text-slate-600">
-                    Pesan yang kamu kirim akan muncul di halaman admin messages.
+                    Kembali ke beranda untuk menjelajah lebih banyak.
                   </p>
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                  <Link
-                    href="/admin/messages"
-                    className="press rounded-2xl bg-amber-200 px-5 py-3 text-sm font-semibold text-slate-900 ring-1 ring-amber-300/60 hover:bg-amber-300"
-                  >
-                    Open Messages
-                  </Link>
                   <Link
                     href="/"
                     className="press rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800 !text-white"

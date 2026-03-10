@@ -1,7 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { prisma } from "@/lib/prisma";
-import { ProjectCategory } from "@prisma/client";
+import { getAllProjects } from "@/lib/markdown";
 import Navbar from "@/components/Navbar";
 import Reveal from "@/components/ui/Reveal";
 import CoverAdaptive from "@/components/ui/CoverAdaptive";
@@ -9,8 +8,7 @@ import SectionHead from "@/components/ui/SectionHead";
 import GrainBackground from "@/components/ui/GrainBackground";
 import { CATEGORY_STYLES, CATS, LABEL, clampText } from "@/lib/projectUi";
 
-export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -49,14 +47,12 @@ export default async function ProjectsPage({
 }) {
   const sp = (await searchParams) ?? {};
   const raw = String(sp.cat || "").toUpperCase();
-  const isValid = (Object.values(ProjectCategory) as string[]).includes(raw);
-  const activeCat: ProjectCategory | "ALL" = isValid ? (raw as ProjectCategory) : "ALL";
+  const isValid = ["WEB", "CTF", "AI", "GAME", "TOOLS", "OTHER"].includes(raw);
+  const activeCat = isValid ? raw : "ALL";
 
-  const where = activeCat === "ALL" ? undefined : { category: activeCat };
-  const [projects, heroPick] = await Promise.all([
-    prisma.project.findMany({ where, orderBy: { createdAt: "desc" } }),
-    prisma.project.findFirst({ where, orderBy: { createdAt: "desc" } }),
-  ]);
+  const allProjects = getAllProjects();
+  const projects = activeCat === "ALL" ? allProjects : allProjects.filter(p => p.category === activeCat);
+  const heroPick = projects[0] || null;
 
   const pick = heroPick || projects[0] || null;
   const pickCat = pick?.category ?? "OTHER";
@@ -154,11 +150,11 @@ export default async function ProjectsPage({
           <Reveal>
             <SectionHead
               kicker="Library"
-              title={activeCat === "ALL" ? "All Projects" : `Category: ${LABEL[activeCat]}`}
+              title={activeCat === "ALL" ? "All Projects" : `Category: ${LABEL[activeCat as keyof typeof LABEL]}`}
               desc={
                 activeCat === "ALL"
                   ? "Semua project disusun dari yang terbaru."
-                  : `Semua project di kategori ${LABEL[activeCat]}.`
+                  : `Semua project di kategori ${LABEL[activeCat as keyof typeof LABEL]}.`
               }
               right={<span className="text-sm font-semibold text-slate-700">{projects.length} items</span>}
             />
@@ -176,7 +172,7 @@ export default async function ProjectsPage({
                 const isCtf = p.category === "CTF";
                 const writeupDownloadUrl = `/api/projects/${encodeURIComponent(p.slug)}/writeup`;
                 return (
-                  <Reveal key={p.id} delay={0.03 + idx * 0.03}>
+                  <Reveal key={p.slug} delay={0.03 + idx * 0.03}>
                     <article
                       className={[
                         "group relative overflow-hidden rounded-3xl bg-white ring-1 ring-slate-200 transition",

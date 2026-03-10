@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { getSiteUrl } from "@/lib/site";
 
+export const dynamic = "force-static";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = getSiteUrl();
   const now = new Date();
@@ -13,11 +15,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   try {
-    const { prisma } = await import("@/lib/prisma");
-    const projects = await prisma.project.findMany({
-      select: { slug: true, updatedAt: true },
-      orderBy: { updatedAt: "desc" },
-    });
+    const { getAllProjects } = await import("@/lib/markdown");
+    const projects = getAllProjects();
 
     for (const p of projects) {
       items.push({
@@ -26,7 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       });
     }
   } catch {
-    // noop: fallback to static routes if DB unavailable
+    // noop: fallback to static routes if markdown unavailable
   }
 
   return items;

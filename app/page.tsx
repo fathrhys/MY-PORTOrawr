@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { prisma } from "@/lib/prisma";
+import { getAllProjects } from "@/lib/markdown";
 import Navbar from "@/components/Navbar";
 import Reveal from "@/components/ui/Reveal";
 import RolesClient from "@/components/ui/RolesClient";
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
 };
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 function StatPill({
   label,
@@ -44,15 +44,11 @@ function StatPill({
 }
 
 export default async function HomePage() {
-  const [latest, featuredPick, totalProjects, totalMessages] = await Promise.all([
-    prisma.project.findMany({ orderBy: { createdAt: "desc" }, take: 3 }),
-    prisma.project.findFirst({
-      where: { category: { in: ["WEB", "CTF"] } },
-      orderBy: { createdAt: "desc" },
-    }),
-    prisma.project.count(),
-    prisma.message.count(),
-  ]);
+  const allProjects = getAllProjects();
+  const latest = allProjects.slice(0, 3);
+  const featuredPick = allProjects.find(p => p.category === "WEB" || p.category === "CTF");
+  const totalProjects = allProjects.length;
+  const totalMessages = 0; // Contact API changed to email
 
   const featured = featuredPick || latest[0] || null;
   const featCat = featured?.category ?? "OTHER";
@@ -247,7 +243,7 @@ export default async function HomePage() {
               latest.map((p, idx) => {
                 const st = CATEGORY_STYLES[p.category];
                 return (
-                  <Reveal key={p.id} delay={0.05 + idx * 0.05}>
+                  <Reveal key={p.slug} delay={0.05 + idx * 0.05}>
                     <div
                       className={[
                         "overflow-hidden rounded-3xl bg-white ring-1 ring-slate-200 transition",
