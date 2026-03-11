@@ -187,33 +187,7 @@ export default function ContactPage() {
           </Reveal>
         </section>
 
-        {/* footer cta */}
-        <section className="mt-16">
-          <Reveal>
-            <div className="rounded-3xl bg-white p-8 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
-              <div className="flex flex-wrap items-center justify-between gap-4">
-                <div>
-                  <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">Next</p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
-                    Suka dengan website ini?
-                  </h2>
-                  <p className="mt-2 text-sm text-slate-600">
-                    Kembali ke beranda untuk menjelajah lebih banyak.
-                  </p>
-                </div>
 
-                <div className="flex flex-wrap gap-3">
-                  <Link
-                    href="/"
-                    className="press rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800 !text-white"
-                  >
-                    Back Home
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </section>
       </div>
     </main>
   );

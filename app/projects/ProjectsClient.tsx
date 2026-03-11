@@ -28,7 +28,7 @@ function FilterPill({ active, href, label }: { active: boolean; href: string; la
 export default function ProjectsClient({ allProjects }: { allProjects: any[] }) {
     const searchParams = useSearchParams();
     const raw = String(searchParams.get("cat") || "").toUpperCase();
-    const isValid = ["WEB", "CTF", "AI", "GAME", "TOOLS", "OTHER"].includes(raw);
+    const isValid = ["WEB", "CTF", "AI", "GAME", "TOOLS", "OTHER", "MOBILE"].includes(raw);
     const activeCat = isValid ? raw : "ALL";
 
     const projects = useMemo(() => {
@@ -155,7 +155,7 @@ export default function ProjectsClient({ allProjects }: { allProjects: any[] }) 
                                         className={[
                                             "group relative overflow-hidden rounded-3xl bg-white ring-1 ring-slate-200 transition",
                                             "hover:-translate-y-1 hover:ring-slate-300 hover:shadow-[0_18px_45px_rgba(15,23,42,0.12)]",
-                                            st.cardHover ?? "",
+                                            st.cardHover || "",
                                             isWide ? "md:col-span-2" : "",
                                         ].join(" ")}
                                     >
@@ -167,14 +167,14 @@ export default function ProjectsClient({ allProjects }: { allProjects: any[] }) 
                                                 isWide ? "h-52 sm:h-60 md:h-72" : "h-44 sm:h-48",
                                             ].join(" ")}
                                         >
-                                            <CoverAdaptive url={p.coverUrl} tintClass={st.coverTint} />
+                                            <CoverAdaptive url={p.coverUrl} tintClass={st.coverTint || "bg-slate-900/10"} />
                                             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                                         </Link>
 
                                         <div className="p-5 sm:p-6">
                                             <div className="flex flex-wrap items-center justify-between gap-3">
                                                 <span className="inline-flex items-center gap-2 text-xs font-semibold text-slate-600">
-                                                    <span className={`h-2 w-2 rounded-full ${st.dot}`} />
+                                                    <span className={`h-2 w-2 rounded-full ${st.dot || "bg-slate-500"}`} />
                                                     {LABEL[p.category as keyof typeof LABEL] || p.category}
                                                 </span>
                                                 {p.year ? (
@@ -225,7 +225,7 @@ export default function ProjectsClient({ allProjects }: { allProjects: any[] }) 
                                                     <>
                                                         <Link
                                                             href={`/projects/${encodeURIComponent(p.slug)}`}
-                                                            className={`u font-semibold ${st.link}`}
+                                                            className={`u font-semibold ${st.link || "text-slate-600"}`}
                                                         >
                                                             Lihat Write-up
                                                         </Link>
@@ -244,7 +244,7 @@ export default function ProjectsClient({ allProjects }: { allProjects: any[] }) 
                                                 {!isCtf ? (
                                                     <Link
                                                         href={`/projects/${encodeURIComponent(p.slug)}`}
-                                                        className={`ml-auto inline-flex items-center gap-2 text-sm font-semibold ${st.link}`}
+                                                        className={`ml-auto inline-flex items-center gap-2 text-sm font-semibold ${st.link || "text-slate-600"}`}
                                                     >
                                                         Open detail &rarr;
                                                     </Link>
@@ -259,38 +259,7 @@ export default function ProjectsClient({ allProjects }: { allProjects: any[] }) 
                 </div>
             </section>
 
-            <section className="mt-16">
-                <Reveal>
-                    <div className="rounded-3xl bg-white p-8 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
-                        <div className="flex flex-wrap items-center justify-between gap-4">
-                            <div>
-                                <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">Next</p>
-                                <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
-                                    Mau lihat writeups atau kontak?
-                                </h2>
-                                <p className="mt-2 text-sm text-slate-600">
-                                    Kalau mau kolaborasi atau tanya-tanya project, langsung aja.
-                                </p>
-                            </div>
 
-                            <div className="flex flex-wrap gap-3">
-                                <Link
-                                    href="/contact"
-                                    className="press rounded-2xl bg-amber-200 px-5 py-3 text-sm font-semibold text-slate-900 ring-1 ring-amber-300/60 hover:bg-amber-300"
-                                >
-                                    Contact
-                                </Link>
-                                <Link
-                                    href="/"
-                                    className="press rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800 !text-white"
-                                >
-                                    Back Home
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </Reveal>
-            </section>
         </div>
     );
 }

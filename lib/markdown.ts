@@ -7,7 +7,7 @@ export type ProjectData = {
     title: string;
     description: string;
     year: number | null;
-    category: "WEB" | "CTF" | "AI" | "GAME" | "TOOLS" | "OTHER";
+    category: "WEB" | "CTF" | "AI" | "GAME" | "TOOLS" | "OTHER" | "MOBILE";
     techStack: string;
     githubUrl: string | null;
     demoUrl: string | null;

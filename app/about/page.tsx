@@ -273,41 +273,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="mt-16">
-          <Reveal>
-            <div className="rounded-3xl bg-white p-8 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
-              <div className="grid gap-6 lg:grid-cols-[1.2fr_.8fr] lg:items-center">
-                <div>
-                  <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
-                    Collaboration
-                  </p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
-                    Mari Terkoneksi.
-                  </h2>
-                  <p className="mt-2 text-sm text-slate-600">
-                    Memiliki ide pengembangan aplikasi sistem inovatif, proyek open-source, atau simulasi *cyber attack & defense*? Mari kita diskusikan.
-                  </p>
-                </div>
 
-                <div className="flex flex-wrap gap-3 lg:justify-end">
-                  <Link
-                    href="/contact"
-                    className="press rounded-2xl bg-amber-200 px-5 py-3 text-sm font-semibold text-slate-900 ring-1 ring-amber-300/60 hover:bg-amber-300"
-                  >
-                    Contact
-                  </Link>
-                  <Link
-                    href="/projects"
-                    className="press rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800 !text-white"
-                  >
-                    Browse Projects
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-        </section>
       </div>
     </main>
   );

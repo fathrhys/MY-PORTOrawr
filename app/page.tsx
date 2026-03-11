@@ -8,6 +8,8 @@ import CoverAdaptive from "@/components/ui/CoverAdaptive";
 import SectionHead from "@/components/ui/SectionHead";
 import GrainBackground from "@/components/ui/GrainBackground";
 import { CATEGORY_STYLES, LABEL, clampText } from "@/lib/projectUi";
+import { CERTIFICATES } from "@/lib/certificates";
+import { FileText } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -388,109 +390,65 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <section className="mt-16">
+        <section className="mt-14">
           <Reveal>
             <SectionHead
-              kicker="Now"
-              title="Continuous Learning"
-              desc="Meningkatkan kapabilitas teknis secara adaptif melalui eksplorasi teknologi mutakhir."
+              kicker="Credentials"
+              title="Latest Certificates"
+              desc="Sertifikasi kompetensi dan penghargaan terbaru."
+              right={
+                <Link href="/certificates" className="u text-sm font-semibold text-slate-700 hover:text-slate-900">
+                  Browse all &rarr;
+                </Link>
+              }
             />
           </Reveal>
 
-          <div className="mt-7 grid gap-4 lg:grid-cols-2">
-            <Reveal delay={0.05}>
-              <div className="rounded-3xl bg-white p-7 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-slate-900">Fokus Pengembangan Saat Ini</h3>
-                  <span className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">
-                    active
-                  </span>
-                </div>
-                <ul className="mt-4 space-y-2 text-sm text-slate-800">
-                  <li className="flex gap-2">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-sky-500" />
-                    Manajemen Infrastruktur & Database Optimization
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-violet-500" />
-                    Aplikasi Web Skala Produksi (Next.js 16, CI/CD)
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-amber-500" />
-                    Digital Forensics & Keamanan Jaringan
-                  </li>
-                </ul>
-              </div>
-            </Reveal>
+          <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {CERTIFICATES.slice(0, 3).map((cert, idx) => (
+              <Reveal key={cert.id} delay={0.05 + idx * 0.05}>
+                <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl bg-white ring-1 ring-slate-200 transition-all hover:-translate-y-1 hover:ring-slate-300 hover:shadow-[0_18px_45px_rgba(15,23,42,0.12)]">
+                  {cert.image ? (
+                    <Link href="/certificates" className="block relative h-40 w-full overflow-hidden bg-slate-100 border-b border-slate-100">
+                      <img
+                        src={cert.image}
+                        alt={`Sertifikat ${cert.title}`}
+                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </Link>
+                  ) : cert.fileUrl?.toLowerCase().endsWith(".pdf") ? (
+                    <Link href="/certificates" className="block relative flex h-40 w-full items-center justify-center overflow-hidden bg-slate-50 border-b border-slate-100 transition-colors group-hover:bg-slate-100">
+                      <div className="flex flex-col items-center justify-center text-slate-400 transition-all duration-500 group-hover:scale-110 group-hover:text-amber-500">
+                        <FileText strokeWidth={1.5} className="mb-3 h-10 w-10" />
+                        <span className="text-[10px] font-semibold tracking-wider text-slate-500">PDF DOCUMENT</span>
+                      </div>
+                    </Link>
+                  ) : null}
+                  <div className="flex flex-col flex-1 p-5 sm:p-6">
+                    <div className="flex items-start justify-between gap-4">
+                      <span className="inline-flex items-center gap-2 rounded-full bg-amber-50 px-2.5 py-1 text-[10px] font-semibold text-amber-800 ring-1 ring-amber-200">
+                        <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                        {cert.issuer}
+                      </span>
+                      <span className="rounded-full bg-slate-50 px-2 py-1 text-[10px] font-semibold text-slate-700 ring-1 ring-slate-200">
+                        {cert.date}
+                      </span>
+                    </div>
 
-            <Reveal delay={0.1}>
-              <div className="rounded-3xl bg-slate-900 p-7 text-white shadow-[0_18px_60px_rgba(15,23,42,0.22)]">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold">Milestone Profesional 2026</h3>
-                  <span className="rounded-full bg-amber-300 px-3 py-1 text-xs font-semibold text-slate-900">
-                    target
-                  </span>
+                    <Link href="/certificates" className="block mt-3">
+                      <h3 className="text-base sm:text-lg font-semibold tracking-tight text-slate-900 group-hover:underline">
+                        {cert.title}
+                      </h3>
+                    </Link>
+
+                    <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-slate-600">
+                      {cert.description}
+                    </p>
+                  </div>
                 </div>
-                <ul className="mt-4 space-y-2 text-sm text-white">
-                  <li className="flex gap-2">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-amber-300" />
-                    Meraih sertifikasi fundamental industri IT & Keamanan Siber
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-amber-300" />
-                    Merilis arsip komprehensif write-up insiden dan simulasi CTF
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-amber-300" />
-                    Berkontribusi dalam penguatan Web Application Defense Framework
-                  </li>
-                </ul>
-                <div className="mt-6">
-                  <Link
-                    href="/projects"
-                    className="press inline-flex items-center justify-center rounded-2xl bg-amber-300 px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-amber-200"
-                  >
-                    See my work &rarr;
-                  </Link>
-                </div>
-              </div>
-            </Reveal>
+              </Reveal>
+            ))}
           </div>
-        </section>
-
-        <section className="mt-16">
-          <Reveal>
-            <div className="rounded-3xl bg-white p-8 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
-              <div className="grid gap-6 lg:grid-cols-[1.2fr_.8fr] lg:items-center">
-                <div>
-                  <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
-                    Collaboration
-                  </p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
-                    Bersinergi Menciptakan Solusi.
-                  </h2>
-                  <p className="mt-2 text-sm text-slate-600">
-                    Mencari mitra untuk pengembangan proyek *open-source*, pembentukan platform SaaS baru, atau merakit tim solid untuk kompetisi *Cybersecurity*? Mari kita wujudkan.
-                  </p>
-                </div>
-
-                <div className="flex flex-wrap gap-3 lg:justify-end">
-                  <Link
-                    href="/contact"
-                    className="press rounded-2xl bg-amber-200 px-5 py-3 text-sm font-semibold text-slate-900 ring-1 ring-amber-300/60 hover:bg-amber-300"
-                  >
-                    Contact me
-                  </Link>
-                  <Link
-                    href="/projects"
-                    className="press rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800 !text-white"
-                  >
-                    Browse Projects
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </Reveal>
         </section>
       </div>
     </main>
