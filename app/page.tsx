@@ -392,8 +392,8 @@ export default async function HomePage() {
           <Reveal>
             <SectionHead
               kicker="Now"
-              title="What I'm learning"
-              desc="Biar keliatan kamu aktif upgrade."
+              title="Continuous Learning"
+              desc="Meningkatkan kapabilitas teknis secara adaptif melalui eksplorasi teknologi mutakhir."
             />
           </Reveal>
 
@@ -401,7 +401,7 @@ export default async function HomePage() {
             <Reveal delay={0.05}>
               <div className="rounded-3xl bg-white p-7 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-slate-900">Sekarang lagi belajar</h3>
+                  <h3 className="text-lg font-semibold text-slate-900">Fokus Pengembangan Saat Ini</h3>
                   <span className="rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">
                     active
                   </span>
@@ -409,15 +409,15 @@ export default async function HomePage() {
                 <ul className="mt-4 space-y-2 text-sm text-slate-800">
                   <li className="flex gap-2">
                     <span className="mt-1 h-2 w-2 rounded-full bg-sky-500" />
-                    Forensics dasar (file carving, log analysis)
+                    Manajemen Infrastruktur & Database Optimization
                   </li>
                   <li className="flex gap-2">
                     <span className="mt-1 h-2 w-2 rounded-full bg-violet-500" />
-                    Web Security (auth, injection, hardening)
+                    Aplikasi Web Skala Produksi (Next.js 16, CI/CD)
                   </li>
                   <li className="flex gap-2">
                     <span className="mt-1 h-2 w-2 rounded-full bg-amber-500" />
-                    Next.js (App Router) + Prisma
+                    Digital Forensics & Keamanan Jaringan
                   </li>
                 </ul>
               </div>
@@ -426,7 +426,7 @@ export default async function HomePage() {
             <Reveal delay={0.1}>
               <div className="rounded-3xl bg-slate-900 p-7 text-white shadow-[0_18px_60px_rgba(15,23,42,0.22)]">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold">Goal 2026</h3>
+                  <h3 className="text-lg font-semibold">Milestone Profesional 2026</h3>
                   <span className="rounded-full bg-amber-300 px-3 py-1 text-xs font-semibold text-slate-900">
                     target
                   </span>
@@ -434,15 +434,15 @@ export default async function HomePage() {
                 <ul className="mt-4 space-y-2 text-sm text-white">
                   <li className="flex gap-2">
                     <span className="mt-1 h-2 w-2 rounded-full bg-amber-300" />
-                    Publish 30 writeups (CTF / lab)
+                    Meraih sertifikasi fundamental industri IT & Keamanan Siber
                   </li>
                   <li className="flex gap-2">
                     <span className="mt-1 h-2 w-2 rounded-full bg-amber-300" />
-                    Bikin 5 project web yang deploy & rapi
+                    Merilis arsip komprehensif write-up insiden dan simulasi CTF
                   </li>
                   <li className="flex gap-2">
                     <span className="mt-1 h-2 w-2 rounded-full bg-amber-300" />
-                    Ikut lomba / magang dan upgrade skill
+                    Berkontribusi dalam penguatan Web Application Defense Framework
                   </li>
                 </ul>
                 <div className="mt-6">
@@ -467,10 +467,10 @@ export default async function HomePage() {
                     Collaboration
                   </p>
                   <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
-                    Let&apos;s build something useful.
+                    Bersinergi Menciptakan Solusi.
                   </h2>
                   <p className="mt-2 text-sm text-slate-600">
-                    Kalau kamu pengen kolaborasi atau ngobrol soal project/CTF, langsung aja.
+                    Mencari mitra untuk pengembangan proyek *open-source*, pembentukan platform SaaS baru, atau merakit tim solid untuk kompetisi *Cybersecurity*? Mari kita wujudkan.
                   </p>
                 </div>
 

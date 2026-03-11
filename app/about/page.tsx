@@ -221,48 +221,44 @@ export default function AboutPage() {
           <Reveal>
             <SectionHead
               kicker="Workflow"
-              title="Cara aku ngerjain project"
-              desc="Biar hasilnya rapi dan bisa dipertanggungjawabkan."
+              title="Development Workflow"
+              desc="Sistematis, terukur, dan mengedepankan keamanan dalam setiap arsitektur."
             />
           </Reveal>
 
           <div className="mt-7 grid gap-4 lg:grid-cols-2">
             <Reveal delay={0.05}>
               <div className="rounded-3xl bg-white p-7 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
-                <h3 className="text-lg font-semibold text-slate-900">1) Plan & Scope</h3>
+                <h3 className="text-lg font-semibold text-slate-900">1) Requirement & Architecture</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-700">
-                  Mulai dari tujuan, user flow, dan scope kecil yang realistis. Kalau udah jelas,
-                  baru pilih stack yang pas.
+                  Menganalisis logika bisnis secara mendalam dan merancang struktur basis data serta *user flow* yang terukur sebelum menulis kode.
                 </p>
               </div>
             </Reveal>
 
             <Reveal delay={0.1}>
               <div className="rounded-3xl bg-white p-7 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
-                <h3 className="text-lg font-semibold text-slate-900">2) Build & Iterate</h3>
+                <h3 className="text-lg font-semibold text-slate-900">2) Agile Development</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-700">
-                  Build versi awal dulu (MVP), lalu iterasi: rapihin UI, tambah fitur penting,
-                  dan pastiin performa + UX aman.
+                  Membangun Minimum Viable Product (MVP) dengan cepat guna menguji fungsionalitas inti, dilanjutkan dengan penyempurnaan UI/UX yang dinamis.
                 </p>
               </div>
             </Reveal>
 
             <Reveal delay={0.15}>
               <div className="rounded-3xl bg-white p-7 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
-                <h3 className="text-lg font-semibold text-slate-900">3) Security Mindset</h3>
+                <h3 className="text-lg font-semibold text-slate-900">3) Security by Design</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-700">
-                  Minimal checklist: validasi input, auth yang benar, rate limiting basic,
-                  dan hindari nyimpen secret sembarangan.
+                  Menerapkan mitigasi keamanan proaktif: enkripsi otentikasi, *input sanitization*, pengaturan batas akses, serta meminimalisir celah eksploitasi sejak tahap *development*.
                 </p>
               </div>
             </Reveal>
 
             <Reveal delay={0.2}>
               <div className="rounded-3xl bg-slate-900 p-7 text-white shadow-[0_18px_60px_rgba(15,23,42,0.20)]">
-                <h3 className="text-lg font-semibold">4) Document & Share</h3>
+                <h3 className="text-lg font-semibold">4) Documentation & Handoff</h3>
                 <p className="mt-2 text-sm leading-relaxed text-white/90">
-                  Aku biasain nulis ringkasan: problem &rarr; solusi &rarr; hasil. Biar bisa jadi portofolio
-                  dan jadi “catatan belajar” yang reusable.
+                  Menyusun rekam jejak teknis yang komprehensif (Logis &rarr; Teknis &rarr; Praktikal) dengan struktur kode yang bersih agar mudah diskalakan oleh rekan *engineer* lainnya.
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   <Link
@@ -287,10 +283,10 @@ export default function AboutPage() {
                     Collaboration
                   </p>
                   <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
-                    Mau kolaborasi?
+                    Mari Terkoneksi.
                   </h2>
                   <p className="mt-2 text-sm text-slate-600">
-                    Kalau kamu punya ide project, tugas sekolah, atau pengen diskusi CTF, gas.
+                    Memiliki ide pengembangan aplikasi sistem inovatif, proyek open-source, atau simulasi *cyber attack & defense*? Mari kita diskusikan.
                   </p>
                 </div>
 
