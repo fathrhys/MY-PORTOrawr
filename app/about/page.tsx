@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Reveal from "@/components/ui/Reveal";
 import SectionHead from "@/components/ui/SectionHead";
 import GrainBackground from "@/components/ui/GrainBackground";
+import { Cloud, Server, Shield, Database, Terminal, Search, Globe, Code } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "About",
@@ -170,107 +171,48 @@ export default function AboutPage() {
         {/* SKILLS */}
         <section className="mt-14">
           <Reveal>
-            <SectionHead
-              kicker="Toolkit"
-              title="Skill & Tools"
-              desc="Yang sering aku pakai buat bikin project dan belajar security."
-            />
-          </Reveal>
+            <div className="rounded-3xl bg-white p-8 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+                <div className="md:w-1/3">
+                  <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
+                    Toolkit
+                  </p>
+                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
+                    Skill & Tools
+                  </h2>
+                  <p className="mt-4 text-sm leading-relaxed text-slate-600">
+                    Fondasi normalku berawal dari eksosistem Cloud Computing, dan kini berkembang ke ranah peretasan sistem (Cybersecurity) & Forensik Digital. Berikut tools favorit yang biasa menemaniku.
+                  </p>
+                </div>
 
-          <div className="mt-7 grid gap-4 lg:grid-cols-3">
-            <Reveal delay={0.04}>
-              <div className="rounded-3xl bg-white p-6 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
-                <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">Web</p>
-                <h3 className="mt-2 text-lg font-semibold text-slate-900">Frontend & Backend</h3>
-                <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                  <li className="flex gap-2"><span className="mt-2 h-2 w-2 rounded-full bg-sky-500" />Next.js (App Router)</li>
-                  <li className="flex gap-2"><span className="mt-2 h-2 w-2 rounded-full bg-sky-500" />API + auth flow</li>
-                  <li className="flex gap-2"><span className="mt-2 h-2 w-2 rounded-full bg-sky-500" />UI dengan Tailwind</li>
-                </ul>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.08}>
-              <div className="rounded-3xl bg-white p-6 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
-                <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">Data</p>
-                <h3 className="mt-2 text-lg font-semibold text-slate-900">Database & ORM</h3>
-                <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                  <li className="flex gap-2"><span className="mt-2 h-2 w-2 rounded-full bg-emerald-500" />Prisma ORM</li>
-                  <li className="flex gap-2"><span className="mt-2 h-2 w-2 rounded-full bg-emerald-500" />MySQL / SQLite</li>
-                  <li className="flex gap-2"><span className="mt-2 h-2 w-2 rounded-full bg-emerald-500" />Schema & migration</li>
-                </ul>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.12}>
-              <div className="rounded-3xl bg-white p-6 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
-                <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">Security</p>
-                <h3 className="mt-2 text-lg font-semibold text-slate-900">CTF & Hardening</h3>
-                <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                  <li className="flex gap-2"><span className="mt-2 h-2 w-2 rounded-full bg-violet-500" />Web vulns (auth, injection)</li>
-                  <li className="flex gap-2"><span className="mt-2 h-2 w-2 rounded-full bg-violet-500" />Linux dasar & tooling</li>
-                  <li className="flex gap-2"><span className="mt-2 h-2 w-2 rounded-full bg-violet-500" />Writeup & dokumentasi</li>
-                </ul>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* PROCESS */}
-        <section className="mt-16">
-          <Reveal>
-            <SectionHead
-              kicker="Workflow"
-              title="Development Workflow"
-              desc="Sistematis, terukur, dan mengedepankan keamanan dalam setiap arsitektur."
-            />
-          </Reveal>
-
-          <div className="mt-7 grid gap-4 lg:grid-cols-2">
-            <Reveal delay={0.05}>
-              <div className="rounded-3xl bg-white p-7 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
-                <h3 className="text-lg font-semibold text-slate-900">1) Requirement & Architecture</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-700">
-                  Menganalisis logika bisnis secara mendalam dan merancang struktur basis data serta *user flow* yang terukur sebelum menulis kode.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <div className="rounded-3xl bg-white p-7 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
-                <h3 className="text-lg font-semibold text-slate-900">2) Agile Development</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-700">
-                  Membangun Minimum Viable Product (MVP) dengan cepat guna menguji fungsionalitas inti, dilanjutkan dengan penyempurnaan UI/UX yang dinamis.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.15}>
-              <div className="rounded-3xl bg-white p-7 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
-                <h3 className="text-lg font-semibold text-slate-900">3) Security by Design</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-700">
-                  Menerapkan mitigasi keamanan proaktif: enkripsi otentikasi, *input sanitization*, pengaturan batas akses, serta meminimalisir celah eksploitasi sejak tahap *development*.
-                </p>
-              </div>
-            </Reveal>
-
-            <Reveal delay={0.2}>
-              <div className="rounded-3xl bg-slate-900 p-7 text-white shadow-[0_18px_60px_rgba(15,23,42,0.20)]">
-                <h3 className="text-lg font-semibold">4) Documentation & Handoff</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/90">
-                  Menyusun rekam jejak teknis yang komprehensif (Logis &rarr; Teknis &rarr; Praktikal) dengan struktur kode yang bersih agar mudah diskalakan oleh rekan *engineer* lainnya.
-                </p>
-                <div className="mt-5 flex flex-wrap gap-3">
-                  <Link
-                    href="/projects"
-                    className="press inline-flex items-center justify-center rounded-2xl bg-amber-300 px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-amber-200"
-                  >
-                    Lihat hasil kerja &rarr;
-                  </Link>
+                <div className="md:w-2/3 grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  {[
+                    { name: "AWS / Cloud", icon: Cloud, color: "text-amber-500" },
+                    { name: "Linux / OS", icon: Terminal, color: "text-slate-700" },
+                    { name: "Burp Suite", icon: Shield, color: "text-orange-500" },
+                    { name: "Wireshark", icon: Search, color: "text-sky-500" },
+                    { name: "SQLMap", icon: Database, color: "text-rose-500" },
+                    { name: "Kali Linux", icon: Server, color: "text-blue-500" },
+                    { name: "Web Security", icon: Globe, color: "text-emerald-500" },
+                    { name: "Development", icon: Code, color: "text-violet-500" },
+                  ].map((tool, idx) => {
+                    const Icon = tool.icon;
+                    return (
+                      <div
+                        key={idx}
+                        className="flex flex-col items-center justify-center rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-200 transition-all hover:-translate-y-1 hover:bg-white hover:shadow-md"
+                      >
+                        <Icon strokeWidth={1.5} className={`h-8 w-8 ${tool.color} mb-3`} />
+                        <span className="text-xs font-semibold text-slate-700 text-center">
+                          {tool.name}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </section>
 
 
