@@ -4,7 +4,12 @@ import Navbar from "@/components/Navbar";
 import Reveal from "@/components/ui/Reveal";
 import SectionHead from "@/components/ui/SectionHead";
 import GrainBackground from "@/components/ui/GrainBackground";
-import { Cloud, Server, Shield, Database, Terminal, Search, Globe, Code } from "lucide-react";
+import { 
+  SiKalilinux, SiWireshark, SiBurpsuite, SiOwasp, 
+  SiDocker, SiLinux, SiNginx, SiCloudflare, 
+  SiPython, SiGnubash, SiJavascript, SiTypescript, SiMysql, SiNextdotjs
+} from "react-icons/si";
+import { FaAws, FaBug, FaDatabase, FaServer } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "About",
@@ -171,46 +176,98 @@ export default function AboutPage() {
         {/* SKILLS */}
         <section className="mt-14">
           <Reveal>
-            <div className="rounded-3xl bg-white p-8 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8">
-                <div className="md:w-1/3">
-                  <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
-                    Toolkit
-                  </p>
-                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
-                    Skill & Tools
-                  </h2>
-                  <p className="mt-4 text-sm leading-relaxed text-slate-600">
-                    Fondasi normalku berawal dari eksosistem Cloud Computing, dan kini berkembang ke ranah peretasan sistem (Cybersecurity) & Forensik Digital. Berikut tools favorit yang biasa menemaniku.
-                  </p>
+            <div className="rounded-3xl bg-white p-7 sm:p-10 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.06)]">
+              <div className="mb-8">
+                <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
+                  Toolkit
+                </p>
+                <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
+                  Skill & Tools
+                </h2>
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-600">
+                  Fondasi normalku berawal dari eksosistem Cloud Computing, dan kini berkembang ke ranah peretasan sistem (Cybersecurity), Forensik Digital, dan Web Development.
+                </p>
+              </div>
+
+              <div className="grid gap-8 md:grid-cols-3">
+                {/* CYBERSECURITY */}
+                <div>
+                  <h3 className="flex items-center gap-2 text-sm font-semibold tracking-tight text-slate-900 border-b border-slate-100 pb-2">
+                    <span className="h-2 w-2 rounded-full bg-rose-500" />
+                    Cyber Security
+                  </h3>
+                  <div className="mt-4 grid grid-cols-2 gap-3">
+                    {[
+                      { name: "Kali Linux", icon: SiKalilinux, color: "text-slate-800" },
+                      { name: "Burp Suite", icon: SiBurpsuite, color: "text-orange-500" },
+                      { name: "Wireshark", icon: SiWireshark, color: "text-sky-600" },
+                      { name: "SQLMap", icon: FaBug, color: "text-slate-600" },
+                      { name: "OWASP", icon: SiOwasp, color: "text-slate-900" },
+                    ].map((tool, idx) => {
+                      const Icon = tool.icon;
+                      return (
+                        <div key={idx} className="flex items-center gap-3 rounded-xl bg-slate-50 p-2.5 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:bg-white hover:shadow-sm">
+                          <Icon className={`h-5 w-5 shrink-0 ${tool.color}`} />
+                          <span className="text-xs font-medium text-slate-700">{tool.name}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
 
-                <div className="md:w-2/3 grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  {[
-                    { name: "AWS / Cloud", icon: Cloud, color: "text-amber-500" },
-                    { name: "Linux / OS", icon: Terminal, color: "text-slate-700" },
-                    { name: "Burp Suite", icon: Shield, color: "text-orange-500" },
-                    { name: "Wireshark", icon: Search, color: "text-sky-500" },
-                    { name: "SQLMap", icon: Database, color: "text-rose-500" },
-                    { name: "Kali Linux", icon: Server, color: "text-blue-500" },
-                    { name: "Web Security", icon: Globe, color: "text-emerald-500" },
-                    { name: "Development", icon: Code, color: "text-violet-500" },
-                  ].map((tool, idx) => {
-                    const Icon = tool.icon;
-                    return (
-                      <div
-                        key={idx}
-                        className="flex flex-col items-center justify-center rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-200 transition-all hover:-translate-y-1 hover:bg-white hover:shadow-md"
-                      >
-                        <Icon strokeWidth={1.5} className={`h-8 w-8 ${tool.color} mb-3`} />
-                        <span className="text-xs font-semibold text-slate-700 text-center">
-                          {tool.name}
-                        </span>
-                      </div>
-                    );
-                  })}
+                {/* CLOUD & ADMIN */}
+                <div>
+                  <h3 className="flex items-center gap-2 text-sm font-semibold tracking-tight text-slate-900 border-b border-slate-100 pb-2">
+                    <span className="h-2 w-2 rounded-full bg-amber-500" />
+                    Cloud & Server
+                  </h3>
+                  <div className="mt-4 grid grid-cols-2 gap-3">
+                    {[
+                      { name: "AWS", icon: FaAws, color: "text-amber-500" },
+                      { name: "Docker", icon: SiDocker, color: "text-blue-500" },
+                      { name: "Linux OS", icon: SiLinux, color: "text-slate-800" },
+                      { name: "Nginx", icon: SiNginx, color: "text-emerald-500" },
+                      { name: "Cloudflare", icon: SiCloudflare, color: "text-orange-400" },
+                      { name: "Server config", icon: FaServer, color: "text-slate-600" },
+                    ].map((tool, idx) => {
+                      const Icon = tool.icon;
+                      return (
+                        <div key={idx} className="flex items-center gap-3 rounded-xl bg-slate-50 p-2.5 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:bg-white hover:shadow-sm">
+                          <Icon className={`h-5 w-5 shrink-0 ${tool.color}`} />
+                          <span className="text-xs font-medium text-slate-700">{tool.name}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* PROGRAMMING & WEB */}
+                <div>
+                  <h3 className="flex items-center gap-2 text-sm font-semibold tracking-tight text-slate-900 border-b border-slate-100 pb-2">
+                    <span className="h-2 w-2 rounded-full bg-violet-500" />
+                    Programming
+                  </h3>
+                  <div className="mt-4 grid grid-cols-2 gap-3">
+                    {[
+                      { name: "Python", icon: SiPython, color: "text-blue-500" },
+                      { name: "Bash", icon: SiGnubash, color: "text-slate-800" },
+                      { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
+                      { name: "Next.js", icon: SiNextdotjs, color: "text-slate-900" },
+                      { name: "MySQL", icon: SiMysql, color: "text-sky-700" },
+                      { name: "Database", icon: FaDatabase, color: "text-slate-500" },
+                    ].map((tool, idx) => {
+                      const Icon = tool.icon;
+                      return (
+                        <div key={idx} className="flex items-center gap-3 rounded-xl bg-slate-50 p-2.5 ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:bg-white hover:shadow-sm">
+                          <Icon className={`h-5 w-5 shrink-0 ${tool.color}`} />
+                          <span className="text-xs font-medium text-slate-700">{tool.name}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
+
             </div>
           </Reveal>
         </section>
