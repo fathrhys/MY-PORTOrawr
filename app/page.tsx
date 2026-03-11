@@ -336,57 +336,54 @@ export default async function HomePage() {
         </section>
 
         <section className="mt-16">
-          <Reveal>
-            <SectionHead
-              kicker="Progress"
-              title="Journey"
-              desc="Ringkas, tapi keliatan kamu berkembang."
-            />
-          </Reveal>
-
-          <div className="mt-7 overflow-x-auto pb-2 [-webkit-overflow-scrolling:touch]">
-            <div className="flex gap-4 min-w-full sm:min-w-[900px] snap-x snap-mandatory">
-              {[
-                {
-                  year: "2024",
-                  title: "Mulai Web",
-                  desc: "HTML/CSS/JS -> mini project.",
-                  c: "bg-sky-100 ring-sky-200",
-                },
-                {
-                  year: "2025",
-                  title: "Ekskul App",
-                  desc: "Fullstack + deploy.",
-                  c: "bg-amber-100 ring-amber-200",
-                },
-                {
-                  year: "2026",
-                  title: "Fokus CTF",
-                  desc: "Forensics/crypto/web writeup.",
-                  c: "bg-violet-100 ring-violet-200",
-                },
-                {
-                  year: "Next",
-                  title: "Target",
-                  desc: "Magang/lomba + portfolio rapi.",
-                  c: "bg-emerald-100 ring-emerald-200",
-                },
-              ].map((s) => (
-                <div
-                  key={s.year}
-                  className="w-[260px] sm:w-[220px] shrink-0 snap-start rounded-3xl bg-white p-5 ring-1 ring-slate-200 shadow-[0_10px_30px_rgba(15,23,42,0.06)]"
-                >
-                  <div
-                    className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold text-slate-900 ring-1 ${s.c}`}
-                  >
-                    <span className="h-2 w-2 rounded-full bg-slate-900/70" />
-                    {s.year}
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold text-slate-900">{s.title}</h3>
-                  <p className="mt-2 text-sm text-slate-600">{s.desc}</p>
+          <div className="grid gap-4 sm:grid-cols-2">
+            <Reveal delay={0.05}>
+              <div className="flex h-full flex-col justify-between rounded-3xl bg-slate-900 p-7 sm:p-8 text-white shadow-[0_18px_60px_rgba(15,23,42,0.22)]">
+                <div>
+                  <p className="text-xs font-semibold tracking-wider text-white/70 uppercase">
+                    Profile
+                  </p>
+                  <h2 className="mt-2 text-2xl font-semibold tracking-tight">
+                    About Me
+                  </h2>
+                  <p className="mt-3 text-sm leading-relaxed text-white/80">
+                    Pelajari lebih lanjut tentang latar belakangku, tools yang biasa kugunakan, dan workflow *development* yang aku terapkan.
+                  </p>
                 </div>
-              ))}
-            </div>
+                <div className="mt-8">
+                  <Link
+                    href="/about"
+                    className="press inline-flex items-center justify-center rounded-2xl bg-amber-300 px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-amber-200"
+                  >
+                    Get to know me &rarr;
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.1}>
+              <div className="flex h-full flex-col justify-between rounded-3xl bg-white p-7 sm:p-8 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.08)]">
+                <div>
+                  <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
+                    Connect
+                  </p>
+                  <h2 className="mt-2 text-2xl font-semibold tracking-tight text-slate-900">
+                    Let&apos;s Talk
+                  </h2>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                    Tertarik berkolaborasi ngerjain *project*, nanya seputar tulisan, atau sekadar *sharing*? Langsung kontak aku aja.
+                  </p>
+                </div>
+                <div className="mt-8">
+                  <Link
+                    href="/contact"
+                    className="press inline-flex items-center justify-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800 !text-white"
+                  >
+                    Send a message &rarr;
+                  </Link>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </section>
 
