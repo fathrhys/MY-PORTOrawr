@@ -85,7 +85,7 @@ export default async function HomePage() {
                 </div>
 
                 <p className="mt-4 max-w-xl text-sm leading-relaxed text-slate-600">
-                  Pelajar SMK yang suka bikin project (web/app) dan ngulik
+                  Pelajar SMK Telkom yang suka bikin project (web / deploy webserver) dan ngulik
                   cybersecurity. Ini tempat aku nyimpen karya terbaik + writeup.
                 </p>
 

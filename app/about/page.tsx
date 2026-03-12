@@ -78,8 +78,8 @@ export default function AboutPage() {
                   </h1>
 
                   <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-700">
-                    Aku <span className="font-semibold text-slate-900">Kamal</span>, pelajar SMK yang
-                    suka bikin project web/app dan ngulik cybersecurity (CTF).
+                    Aku <span className="font-semibold text-slate-900">Nashwan</span>, pelajar SMK Telkom yang
+                    suka bikin project web / deploy server dan ngulik cybersecurity dengan tipe CTF.
                     Website ini jadi tempat aku simpan{" "}
                     <span className="font-semibold text-slate-900">project</span>,{" "}
                     <span className="font-semibold text-slate-900">writeup</span>, dan catatan proses belajar
@@ -89,7 +89,7 @@ export default function AboutPage() {
                   <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-700">
                     Fokusku sekarang: ngebangun fondasi yang kuat di{" "}
                     <span className="font-semibold text-slate-900">web development</span> dan{" "}
-                    <span className="font-semibold text-slate-900">web security</span>.
+                    <span className="font-semibold text-slate-900">deployment webserver</span>.
                     Aku suka gaya kerja yang jelas: target kecil tapi konsisten, dokumentasi rapih,
                     dan hasil yang bisa dipakai orang lain.
                   </p>
@@ -185,7 +185,7 @@ export default function AboutPage() {
                   Skill & Tools
                 </h2>
                 <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-600">
-                  Fondasi normalku berawal dari eksosistem Cloud Computing, dan kini berkembang ke ranah peretasan sistem (Cybersecurity), Forensik Digital, dan Web Development.
+                  Fondasi normalku berawal dari eksosistem Cloud Computing, dan kini berkembang ke ranah Pentest Web, Forensik Digital, dan Web Development.
                 </p>
               </div>
 
