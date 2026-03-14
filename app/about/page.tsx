@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Reveal from "@/components/ui/Reveal";
 import SectionHead from "@/components/ui/SectionHead";
 import GrainBackground from "@/components/ui/GrainBackground";
+import Image from "next/image";
 import { 
   SiKalilinux, SiWireshark, SiBurpsuite, SiOwasp, 
   SiDocker, SiLinux, SiNginx, SiCloudflare, 
@@ -90,8 +91,6 @@ export default function AboutPage() {
                     Fokusku sekarang: ngebangun fondasi yang kuat di{" "}
                     <span className="font-semibold text-slate-900">web development</span> dan{" "}
                     <span className="font-semibold text-slate-900">deployment webserver</span>.
-                    Aku suka gaya kerja yang jelas: target kecil tapi konsisten, dokumentasi rapih,
-                    dan hasil yang bisa dipakai orang lain.
                   </p>
 
                   <div className="mt-5 flex flex-wrap gap-2">
@@ -132,33 +131,20 @@ export default function AboutPage() {
                     <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
                       Snapshot
                     </p>
-                    <p className="mt-2 text-sm text-slate-700">
-                      Ringkasan cepat: apa yang lagi aku kerjain & cara aku belajar.
-                    </p>
-
+                    <div className="mt-5 rounded-2xl bg-slate-50 p-2.5 ring-1 ring-slate-200">
+                      <div className="relative w-full aspect-square overflow-hidden rounded-xl ring-4 ring-white shadow-md">
+                        <Image
+                          src="/profilku.jpg"
+                          alt="Foto Profil Nashwan"
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 400px"
+                        />
+                      </div>
+                    </div>
                     <div className="mt-5 grid gap-3 sm:grid-cols-2">
                       <Stat label="STATUS" value="Active" hint="Belajar & build rutin" />
-                      <Stat label="FOCUS" value="Web + CTF" hint="Dev + security" />
-                    </div>
-
-                    <div className="mt-5 rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-200">
-                      <p className="text-xs font-semibold tracking-wider text-slate-500 uppercase">
-                        Values
-                      </p>
-                      <ul className="mt-3 space-y-2 text-sm text-slate-700">
-                        <li className="flex gap-2">
-                          <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-emerald-500" />
-                          Dokumentasi rapi (biar gampang dipelajari lagi)
-                        </li>
-                        <li className="flex gap-2">
-                          <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-sky-500" />
-                          Clean UI dan UX yang jelas
-                        </li>
-                        <li className="flex gap-2">
-                          <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-violet-500" />
-                          Security mindset sejak awal
-                        </li>
-                      </ul>
+                      <Stat label="FOCUS" value="Cloud Server & Web Builder" hint="Web & Cloud" />
                     </div>
 
                     <div className="mt-5">
