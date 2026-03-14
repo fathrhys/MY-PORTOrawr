@@ -19,7 +19,7 @@ export default function ContactPage() {
     setStatus("loading");
     setMsg("");
 
-    const res = await fetch("https://formspree.io/f/ganti_dengan_id_form_kamu", {
+    const res = await fetch("https://formspree.io/f/mbdzkbea", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, message: content }),
@@ -177,7 +177,7 @@ export default function ContactPage() {
                         </a>
                       </div>
                       <p className="mt-4 text-xs text-white/60">
-                        Prefer chat? Kamu bisa tulis email kamu, aku bales via email (kalau kamu pakai endpoint itu).
+                        Prefer chat? Kamu bisa tulis email kamu, aku bales via email.
                       </p>
                     </div>
                   </Reveal>
