@@ -48,7 +48,7 @@ export default function TerminalPage() {
                 );
                 break;
             case "whoami":
-                output = "guest@Nashwan.dev\n\nAhmad Fadhil Fathi R. N. - Cloud & DevOps Engineer.\nPassionate about Cybersecurity, Web Development, and Building scalable systems.";
+                output = "guest@Nashwan.dev\n\nAhmad Fadhil Fathi Rahesya Nashwan - Cloud & DevOps Engineer.\nPassionate about Cybersecurity, Web Development, and Building scalable systems.";
                 break;
             case "ls":
                 output = (

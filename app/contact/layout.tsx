@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Kirim pesan untuk kolaborasi atau tanya project.",
+  title: "Contact - Nashwan",
+  description: "Terhubung atau kolaborasi dengan Nashwan.",
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
-    title: "Contact - Kamal",
+    title: "Contact - Nashwan",
     description: "Kirim pesan untuk kolaborasi atau tanya project.",
     url: "/contact",
     images: [{ url: "/og.svg" }],

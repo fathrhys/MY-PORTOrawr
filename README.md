@@ -9,8 +9,9 @@ Initially built dynamically with Next.js 14, **Prisma ORM**, and **MySQL**, this
 - **Blazing Fast (SSG)**: Entire site generates static HTML at build time (`output: "export"`). No database queries, no server-side rendering latency.
 - **Markdown Driven Content**: Project write-ups and CTF walkthroughs are simply written in `.md` files under the `content/projects/` directory.
 - **Beautiful Typography**: Uses `@tailwindcss/typography`, `react-markdown`, `remark-gfm`, and `rehype-highlight` for beautiful rendering of code blocks and prose.
-- **Built-in Certificates Tracker**: Simple tracking of achieved certificates and credentials.
-- **Interactive Terminal**: A fun `kamalOS` / `NashwanOS` interactive terminal simulation built in React.
+- **Project Showcase**: Filtering by category, tech stack pills, responsive layouts.
+- **Interactive Terminal**: A fun `NashwanOS` interactive terminal simulation built in React.
+- **CTF Writeups**: Easy reading interface for cyber security writeups.
 
 ## 🛠️ Tech Stack
 

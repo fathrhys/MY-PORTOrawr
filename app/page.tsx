@@ -77,7 +77,7 @@ export default async function HomePage() {
                 </div>
 
                 <h1 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight">
-                  Halo, aku <span className="text-slate-950">Ahmad Fadhil Fathi R. N.</span>
+                  Halo, aku <span className="text-slate-950">Ahmad Fadhil Fathi Rahesya Nashwan</span>
                 </h1>
 
                 <div className="mt-4">
