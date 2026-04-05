@@ -19,24 +19,40 @@ export default function ContactPage() {
     setStatus("loading");
     setMsg("");
 
-    const res = await fetch("https://formspree.io/f/mbdzkbea", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, message: content }),
-    });
+    try {
+      const res = await fetch("https://formspree.io/f/mbdzkbea", {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({ name, email, message: content }),
+      });
 
-    if (!res.ok) {
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        setStatus("err");
+        if (data?.errors) {
+          toast.error(data.errors.map((err: any) => err.message).join(", "));
+        } else if (data?.error) {
+          toast.error(data.error);
+        } else {
+          toast.error("Gagal mengirim pesan. Silakan coba lagi nanti.");
+        }
+        return;
+      }
+
+      setStatus("ok");
+      toast.success("Terkirim! Pesan kamu akan masuk ke email.");
+      setName("");
+      setEmail("");
+      setContent("");
+    } catch (error) {
       setStatus("err");
-      toast.error("Gagal mengirim pesan. Pastikan ID Formspree sudah diisi di kode.");
-      return;
+      toast.error("Terjadi kesalahan jaringan.");
     }
-
-    setStatus("ok");
-    toast.success("Terkirim! Pesan kamu akan masuk ke email.");
-    setName("");
-    setEmail("");
-    setContent("");
   }
+
 
   const isLoading = status === "loading";
 

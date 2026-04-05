@@ -56,10 +56,10 @@ export const CERTIFICATES: Certificate[] = [
     },
     {
         id: "cert-jhic-2025",
-        title: "Quarter Finalist JHIC 2025",
+        title: "Top 30 Finalist Team JHIC 2025",
         issuer: "Jagoan Hosting",
         date: "November 2025",
-        description: "Lolos memembus Quarter Finalist dalam ajang Jagoan Hosting Infra Competition (JHIC) 2025, ajang uji kompetensi bergengsi di bidang infrastruktur teknologi terapan berskala nasional.",
+        description: "Lolos memembus Top 30 Finalist Team dalam ajang Jagoan Hosting Infra Competition (JHIC) 2025, ajang uji kompetensi bergengsi di bidang infrastruktur teknologi terapan berskala nasional.",
         image: "/certificates/JHIC.png",
         fileUrl: "/certificates/JHIC.png",
         tags: ["Infrastructure", "DevOps", "Jagoan Hosting"],
@@ -73,5 +73,15 @@ export const CERTIFICATES: Certificate[] = [
         credentialId: "D2500858",
         fileUrl: "/certificates/Digiup-Cybersecurity-2025.pdf",
         tags: ["Cyber Security", "Penetration Testing", "Telkom"],
+    },
+    {
+        id: "cert-gca-2025",
+        title: "Google Cloud Arcade Fasilitator 2025: Program Overview & Deep Dive",
+        issuer: "Google Cloud Arcade x Dicoding Indonesia",
+        date: "24 Juli 2025",
+        description: "Mengikuti acara Google Cloud Arcade Fasilitator 2025: Program Overview & Deep Dive yang diselenggarakan oleh Google Cloud Arcade, sebagai bagian dari pengenalan program dan pendalaman materi bagi fasilitator.",
+        credentialId: "-",
+        fileUrl: "/certificates/google-cloud-arcade-fasilitator-2025-program-overview-deep-dive-certificate.pdf",
+        tags: ["Cloud Computing", "Google Cloud", "Workshop", "Dicoding"],
     },
 ];

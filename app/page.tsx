@@ -137,90 +137,35 @@ export default async function HomePage() {
             </Reveal>
 
             <Reveal delay={0.08}>
-              <div className="overflow-hidden rounded-3xl bg-white ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.10)]">
-                <div className="relative h-44 sm:h-52">
-                  <CoverAdaptive url={featured?.coverUrl} tintClass={featStyle.coverTint} />
-                  <div className="absolute left-4 top-4 flex items-center gap-2">
-                    <span className={`rounded-full px-3 py-1 text-xs font-semibold ${featStyle.chip}`}>
-                      {LABEL[featCat]}
-                    </span>
-                    <span className="rounded-full bg-white/90 px-2.5 py-1 text-xs font-semibold text-slate-900 ring-1 ring-slate-200">
-                      {featured?.year ?? ""}
-                    </span>
+              <div className="h-full min-h-[300px] sm:min-h-[400px] overflow-hidden rounded-3xl bg-slate-900 ring-1 ring-slate-200 shadow-[0_18px_60px_rgba(15,23,42,0.10)] relative flex flex-col justify-end group">
+                <video 
+                  src="/holo-landing-page-box-2.mp4" 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/10 to-transparent mix-blend-multiply"></div>
+                
+                <div className="relative z-10 p-6 sm:p-8">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/40 backdrop-blur-md px-3 py-1.5 shadow-sm mb-3">
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="text-xs font-semibold tracking-wide text-white">System Online</span>
                   </div>
-                </div>
-
-                <div className="p-5 sm:p-6">
-                  {featured ? (
-                    <>
-                      <p className="text-[11px] font-semibold tracking-wider text-slate-500 uppercase">
-                        Highlight
-                      </p>
-                      <h3 className="mt-1 text-lg sm:text-xl font-semibold tracking-tight text-slate-900 line-clamp-2">
-                        {featured.title}
-                      </h3>
-
-                      <p className="break-anywhere text-sm leading-relaxed text-slate-600">
-                        {clampText(featured.description, 220)}
-                      </p>
-
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {featured.techStack
-                          .split(",")
-                          .map((s) => s.trim())
-                          .filter(Boolean)
-                          .slice(0, 8)
-                          .map((t) => (
-                            <span
-                              key={t}
-                              className="rounded-full bg-slate-50 px-3 py-1 text-xs text-slate-700 ring-1 ring-slate-200"
-                            >
-                              {t}
-                            </span>
-                          ))}
-                      </div>
-
-                      <div className="mt-5 flex flex-wrap gap-3">
-                        <Link
-                          href={`/projects?cat=${featured.category}`}
-                          className="press rounded-2xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 !text-white"
-                        >
-                          See category
-                        </Link>
-
-                        {featured.githubUrl ? (
-                          <a
-                            href={featured.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="press rounded-2xl bg-white px-4 py-2 text-sm font-semibold text-slate-900 ring-1 ring-slate-200 hover:bg-slate-50"
-                          >
-                            GitHub
-                          </a>
-                        ) : null}
-
-                        {featured.demoUrl ? (
-                          <a
-                            href={featured.demoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="press rounded-2xl bg-amber-200 px-4 py-2 text-sm font-semibold text-slate-900 ring-1 ring-amber-300/60 hover:bg-amber-300"
-                          >
-                            Demo
-                          </a>
-                        ) : null}
-                      </div>
-                    </>
-                  ) : (
-                    <p className="text-sm text-slate-600">
-                      Tambah project dari <span className="font-semibold">/admin/projects</span>.
-                    </p>
-                  )}
+                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight drop-shadow-md">
+                    Thats Me!
+                  </h3>
+                  <p className="mt-1 text-sm text-slate-200 drop-shadow-sm">
+                    CyberSecurity Enthusiast & Cloud Engineer.
+                  </p>
                 </div>
               </div>
             </Reveal>
           </div>
         </section>
+
+
 
         <section className="mt-14">
           <Reveal>

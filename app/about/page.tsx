@@ -10,7 +10,7 @@ import {
   SiDocker, SiLinux, SiNginx, SiCloudflare, 
   SiPython, SiGnubash, SiJavascript, SiTypescript, SiMysql, SiNextdotjs
 } from "react-icons/si";
-import { FaAws, FaBug, FaDatabase, FaServer } from "react-icons/fa";
+import { FaAws, FaBug, FaDatabase, FaServer, FaGithub, FaLinkedin } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "About",
@@ -121,6 +121,27 @@ export default function AboutPage() {
                       className="press inline-flex items-center justify-center rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-slate-900 ring-1 ring-slate-200 hover:bg-slate-50"
                     >
                       Download CV
+                    </a>
+                  </div>
+
+                  <div className="mt-8 flex flex-wrap items-center gap-3 border-t border-slate-100 pt-6">
+                    <a
+                      href="https://github.com/fathrhys"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="press group flex items-center gap-2.5 rounded-2xl bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-slate-200 transition-all hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-md"
+                    >
+                      <FaGithub className="h-5 w-5 text-slate-700 transition-all duration-300 group-hover:scale-110 group-hover:text-slate-950" />
+                      GitHub
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/ahmad-fadhil-fathi-rahesya-nashwan-0294b3352/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="press group flex items-center gap-2.5 rounded-2xl bg-white px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm ring-1 ring-slate-200 transition-all hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-md"
+                    >
+                      <FaLinkedin className="h-5 w-5 text-[#0a66c2]/80 transition-all duration-300 group-hover:scale-110 group-hover:text-[#0a66c2]" />
+                      LinkedIn
                     </a>
                   </div>
                 </div>
